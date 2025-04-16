@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>x3aa Services | Premium Xbox Enhancement Solutions</title>
+    <meta name="description" content="Premium Xbox tools to boost followers, gamerscore, claim rare gamertags, and dominate the Xbox platform">
+    <meta name="keywords" content="xbox followers, gamerscore boost, rare gamertags, xbox tools, xbox services, x3aa">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #107C10;
+            --primary-dark: #0a5a09;
+            --accent: #5bc95b;
+            --accent-light: #7cff7c;
+            --dark: #0f0f0f;
+            --darker: #080808;
+            --light: #f0f0f0;
+            --gray: #222;
+            --light-gray: #444;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --glow: 0 0 15px rgba(91, 201, 91, 0.8);
+            --neon: 0 0 10px rgba(91, 201, 91, 0.7), 0 0 20px rgba(91, 201, 91, 0.5);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: rgba(8,8,8,0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 1rem 5%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .logo i {
+            font-size: 1.5rem;
+            color: var(--accent-light);
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--neon);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 12rem 5% 6rem;
+            background: linear-gradient(135deg, rgba(11,11,11,0.9) 0%, rgba(15,15,15,0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1605899435973-ca2d1a8861cf?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .hero h1 span {
+            color: var(--accent);
+            position: relative;
+            text-shadow: var(--neon);
+            animation: neon-pulse 2s infinite alternate;
+        }
+        
+        @keyframes neon-pulse {
+            0% { text-shadow: 0 0 10px rgba(91, 201, 91, 0.7), 0 0 20px rgba(91, 201, 91, 0.5); }
+            100% { text-shadow: 0 0 15px rgba(91, 201, 91, 0.9), 0 0 30px rgba(91, 201, 91, 0.7); }
+        }
+        
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+        
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: #ccc;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: var(--neon);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--light);
+            border: 2px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(91, 201, 91, 0.2);
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 150px;
+            padding: 1.5rem;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow);
+            background-color: rgba(0,0,0,0.3);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 6rem 5%;
+            background-color: var(--darker);
+            position: relative;
+        }
+        
+        .services::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent 0%, var(--dark) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .service-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--gray);
+            color: var(--light);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tab-button.active, .tab-button:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 5px 15px rgba(91, 201, 91, 0.3);
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--gray);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            border-color: var(--accent);
+        }
+        
+        .service-card-popular {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: 0 3px 10px rgba(91, 201, 91, 0.3);
+        }
+        
+        .service-card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+        
+        .service-card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .service-card-header p {
+            color: #aaa;
+        }
+        
+        .service-card-body {
+            padding: 1.5rem;
+        }
+        
+        .price-tag {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+        
+        .price-tag span {
+            font-size: 1rem;
+            color: #aaa;
+            font-weight: 400;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .features-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+        
+        .features-list li::before {
+            content: '✓';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .service-card-footer {
+            padding: 0 1.5rem 1.5rem;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            position: relative;
+        }
+        
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--darker) 0%, transparent 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--gray);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-color: var(--accent);
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(91, 201, 91, 0.3);
+        }
+        
+        .step-card h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .step-card p {
+            color: #aaa;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 5%;
+            background-color: var(--darker);
+            position: relative;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-card {
+            background-color: var(--gray);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-color: var(--accent);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 5rem;
+            color: rgba(255,255,255,0.05);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+        }
+        
+        .testimonial-rating {
+            color: #ffc107;
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
+        }
+        
+        .testimonial-content {
+            color: #ccc;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Preview Section */
+        .preview {
+            padding: 6rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+        }
+        
+        .preview-container {
+            margin-top: 3rem;
+            background-color: var(--gray);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: var(--transition);
+        }
+        
+        .preview-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            border-color: var(--accent);
+        }
+        
+        .preview-image {
+            max-width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .preview-image:hover {
+            transform: scale(1.02);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 5%;
+            background-color: var(--darker);
+        }
+        
+        .accordion {
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .accordion-item:hover {
+            border-color: var(--accent);
+        }
+        
+        .accordion-header {
+            padding: 1.5rem;
+            background-color: var(--gray);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .accordion-header:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: var(--transition);
+            color: var(--accent);
+        }
+        
+        .accordion-header.active::after {
+            content: '-';
+            color: var(--accent-light);
+        }
+        
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: var(--gray);
+        }
+        
+        .accordion-content-inner {
+            padding: 0 0 1.5rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--gray);
+            color: var(--light);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(91, 201, 91, 0.3);
+        }
+        
+        .newsletter-form {
+            margin-top: 1.5rem;
+        }
+        
+        .newsletter-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background-color: var(--dark);
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            color: var(--light);
+            margin-bottom: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(91, 201, 91, 0.3);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            box-shadow: var(--neon);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            transform: translateY(-5px);
+        }
+        
+        /* Floating Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 5%;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 10rem 5% 4rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps-container {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* Glow Animation */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(91, 201, 91, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(91, 201, 91, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(91, 201, 91, 0); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-gamepad"></i>
+            <span>x3aa</span>Services
+        </div>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="#services" class="cta-button">
+            <i class="fas fa-rocket"></i>
+            Get Started
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <h1 class="fade-in">Dominate Xbox With <span>x3aa Services</span></h1>
+            <p class="fade-in delay-1">Premium Xbox tools to boost followers, gamerscore, claim rare gamertags, and dominate the Xbox platform like never before</p>
+            <div class="hero-buttons fade-in delay-2">
+                <a href="#services" class="btn btn-primary pulse">
+                    <i class="fas fa-bolt"></i>
+                    Explore Services
+                </a>
+                <a href="#preview" class="btn btn-secondary">
+                    <i class="fas fa-eye"></i>
+                    See Results
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item fade-in">
+                <div class="stat-number">25,000+</div>
+                <div class="stat-label">Satisfied Customers</div>
+            </div>
+            <div class="stat-item fade-in delay-1">
+                <div class="stat-number">5.2M+</div>
+                <div class="stat-label">Followers Delivered</div>
+            </div>
+            <div class="stat-item fade-in delay-2">
+                <div class="stat-number">1,200+</div>
+                <div class="stat-label">Rare Gamertags Claimed</div>
+            </div>
+            <div class="stat-item fade-in delay-3">
+                <div class="stat-number">99.8%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Premium Xbox Services</h2>
+                <p>Choose from our selection of powerful Xbox tools to enhance your gaming profile</p>
+            </div>
+            
+            <div class="service-tabs">
+                <button class="tab-button active">
+                    <i class="fas fa-layer-group"></i>
+                    All Services
+                </button>
+                <button class="tab-button">
+                    <i class="fas fa-users"></i>
+                    Followers
+                </button>
+                <button class="tab-button">
+                    <i class="fas fa-robot"></i>
+                    Bots
+                </button>
+                <button class="tab-button">
+                    <i class="fas fa-trophy"></i>
+                    Gamerscore
+                </button>
+                <button class="tab-button">
+                    <i class="fas fa-tag"></i>
+                    Gamertags
+                </button>
+            </div>
+            
+            <div class="service-grid">
+                <!-- Follower Packages -->
+                <div class="service-card">
+                    <div class="service-card-popular">Most Popular</div>
+                    <div class="service-card-header">
+                        <h3>Xbox Followers</h3>
+                        <p>Instant follower delivery</p>
+                    </div>
+                    <div class="service-card-body">                   
+                        $19.99 <span>/ 1,000 followers</span>
+                    </div>
+                    <ul class="features-list">
+                        <li>Guaranteed real-looking followers</li>
+                        <li>Instant delivery after payment</li>
+                        <li>24/7 customer support</li>
+                        <li>100% safe and undetectable</li>
+                        <li>No password required</li>
+                    </ul>
+                    <div class="service-card-footer">
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-shopping-cart"></i>
+                            Purchase Now
+                        </a>
+                    </div>
+            </div>
+
+                <!-- Gamerscore Boost -->
+                <div class="service-card">
+                    <div class="service-card-header">
+                        <h3>Gamerscore Boost</h3>
+                        <p>Level up your profile</p>
+                    </div>
+                    <div class="service-card-body">
+                        <div class="price-tag">
+                            $29.99 <span>/ 5,000 GS</span>
+                        </div>
+                        <ul class="features-list">
+                            <li>Fast achievement unlocking</li>
+                            <li>Customizable GS amount</li>
+                            <li>Undetectable by Microsoft</li>
+                            <li>Works on all Xbox consoles</li>
+                            <li>Complete in 24-48 hours</li>
+                        </ul>
+                        <div class="service-card-footer">
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                Purchase Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rare Gamertags -->
+                <div class="service-card">
+                    <div class="service-card-popular">Limited</div>
+                    <div class="service-card-header">
+                        <h3>Rare Gamertags</h3>
+                        <p>Exclusive usernames</p>
+                    </div>
+                    <div class="service-card-body">
+                        <div class="price-tag">
+                            $99.99 <span>/ single tag</span>
+                        </div>
+                        <ul class="features-list">
+                            <li>1-3 character gamertags</li>
+                            <li>Dictionary words</li>
+                            <li>OG and rare names</li>
+                            <li>Full ownership transfer</li>
+                            <li>100% legit acquisition</li>
+                        </ul>
+                        <div class="service-card-footer">
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                Browse Tags
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto View Bot -->
+                <div class="service-card">
+                    <div class="service-card-header">
+                        <h3>Auto View Bot</h3>
+                        <p>Boost your streams</p>
+                    </div>
+                    <div class="service-card-body">
+                        <div class="price-tag">
+                            $14.99 <span>/ month</span>
+                        </div>
+                        <ul class="features-list">
+                            <li>500+ concurrent viewers</li>
+                            <li>Works on Mixer & Twitch</li>
+                            <li>Custom viewer count</li>
+                            <li>24/7 uptime</li>
+                            <li>Undetectable technology</li>
+                        </ul>
+                        <div class="service-card-footer">
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                Subscribe Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Verification -->
+                <div class="service-card">
+                    <div class="service-card-header">
+                        <h3>Verification Badge</h3>
+                        <p>Official status symbol</p>
+                    </div>
+                    <div class="service-card-body">
+                        <div class="price-tag">
+                            $249.99 <span>/ one-time</span>
+                        </div>
+                        <ul class="features-list">
+                            <li>Verified Xbox profile</li>
+                            <li>Permanent verification</li>
+                            <li>Works with existing account</li>
+                            <li>Priority customer support</li>
+                            <li>100% success rate</li>
+                        </ul>
+                        <div class="service-card-footer">
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                Get Verified
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Package -->
+                <div class="service-card">
+                    <div class="service-card-header">
+                        <h3>Custom Package</h3>
+                        <p>Tailored to your needs</p>
+                    </div>
+                    <div class="service-card-body">
+                        <div class="price-tag">
+                            Custom <span>pricing</span>
+                        </div>
+                        <ul class="features-list">
+                            <li>Personalized service bundle</li>
+                            <li>Bulk order discounts</li>
+                            <li>VIP customer manager</li>
+                            <li>Priority processing</li>
+                            <li>24/7 direct support</li>
+                        </ul>
+                        <div class="service-card-footer">
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-headset"></i>
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Get started with x3aa Services in just a few simple steps</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Service</h3>
+                    <p>Select from our premium Xbox enhancement services that fit your needs</p>
+                </div>
+                <div class="step-card fade-in delay-1">
+                    <div class="step-number">2</div>
+                    <h3>Complete Payment</h3>
+                    <p>Securely checkout with our multiple payment options including crypto</p>
+                </div>
+                <div class="step-card fade-in delay-2">
+                    <div class="step-number">3</div>
+                    <h3>Provide Details</h3>
+                    <p>Enter your Xbox gamertag and any required information</p>
+                </div>
+                <div class="step-card fade-in delay-3">
+                    <div class="step-number">4</div>
+                    <h3>Receive Results</h3>
+                    <p>Get your enhanced Xbox profile within the guaranteed timeframe</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <p>Thousands of satisfied customers have transformed their Xbox experience</p>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-author">Mark T.</div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        "Got 10k followers overnight and my engagement skyrocketed. The service was flawless and support helped me with every question I had. Definitely coming back for more!"
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in delay-1">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-author">Sarah L.</div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        "I was skeptical at first but they delivered exactly what they promised. Scored the gamertag 'Nova' which I've wanted for years. Worth every penny!"
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in delay-2">
+                    <div class="testimonial-header">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="User" class="testimonial-avatar">
+                        <div>
+                            <div class="testimonial-author">James R.</div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        "The gamerscore boost was insane! Went from 15k to 50k in two days with all achievements looking legit. My friends think I'm some gaming god now."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preview Section -->
+    <section id="preview" class="preview">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>See The Results</h2>
+                <p>Real examples from our satisfied customers</p>
+            </div>
+
+            <div class="preview-container fade-in">
+                <img src="https://i.imgur.com/JqYeZRn.png" alt="Xbox profile with 50k followers" class="preview-image">
+                <h3>From 200 to 50,000 Followers in 24 Hours</h3>
+                <p>This customer used our premium follower package to instantly boost their social proof and attract organic followers.</p>
+                <a href="#services" class="btn btn-primary" style="margin-top: 1.5rem;">
+                    <i class="fas fa-bolt"></i>
+                    Get Yours Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about our services</p>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item fade-in">
+                    <div class="accordion-header">
+                        Is this service safe for my account?
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Absolutely. We use advanced methods that are completely undetectable by Microsoft's systems. All our services are designed to mimic organic growth and activity patterns. In our 5+ years of operation, we've maintained a 99.8% success rate with zero bans when used as directed.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item fade-in delay-1">
+                    <div class="accordion-header">
+                        How quickly will I see results?
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Most services begin working immediately after purchase. Follower packages typically complete within 24 hours. Gamerscore boosts take 24-48 hours depending on the amount. Rare gamertags are transferred instantly upon purchase. You'll receive email notifications at each stage of the process.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item fade-in delay-2">
+                    <div class="accordion-header">
+                        Do you need my password?
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>No, we never ask for your password. For most services, we only need your gamertag. For gamertag transfers, we use Microsoft's official transfer system. Your account security is our top priority.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item fade-in delay-3">
+                    <div class="accordion-header">
+                        What payment methods do you accept?
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>We accept all major credit cards, PayPal, and cryptocurrencies (Bitcoin, Ethereum, Litecoin). Crypto payments receive a 10% discount. All payments are processed securely through encrypted channels.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item fade-in">
+                    <div class="accordion-header">
+                        Can I get banned for using your services?
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>We guarantee our methods are safe when used as directed. Our technology has been refined over years to ensure complete compliance with Xbox's terms of service. However, we cannot account for extreme misuse (like boosting 100k GS in an hour). Stick to our recommended packages for optimal safety.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="fade-in">Ready To Dominate Xbox?</h2>
+            <p class="fade-in delay-1">Join thousands of satisfied customers who've transformed their gaming presence with x3aa Services</p>
+            <a href="#services" class="btn btn-primary pulse fade-in delay-2" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+                <i class="fas fa-rocket"></i>
+                Boost My Profile Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>x3aa Services</h3>
+                <p>Premium Xbox enhancement solutions since 2018. Trusted by over 25,000 customers worldwide.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Xbox Followers</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Gamerscore Boost</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Rare Gamertags</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> View Bots</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Verification</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Live Chat</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Status</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe for exclusive deals and service updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email" class="newsletter-input" required>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i>
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2023 x3aa Services. All rights reserved. Not affiliated with Microsoft or Xbox.
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back to top button
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                    document.querySelector('.navbar').classList.add('scrolled');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                    document.querySelector('.navbar').classList.remove('scrolled');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Accordion functionality
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                });
+            });
+            
+            // Tab functionality
+            const tabButtons = document.querySelectorAll('.tab-button');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    // Here you would add filtering logic for services
+                });
+            });
+            
+            // Create particles
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100 + 100; // Start below viewport
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                
+                // Random animation duration
+                const duration = Math.random() * 20 + 10;
+                
+                // Random delay
+                const delay = Math.random() * 5;
+                
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
