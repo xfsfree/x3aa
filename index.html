@@ -31,6 +31,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -1049,6 +1050,362 @@
         .pulse {
             animation: pulse 2s infinite;
         }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: var(--gray);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 30px rgba(91, 201, 91, 0.3);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .modal-header h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        /* Package Options */
+        .package-options {
+            display: grid;
+            height: 10%;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .package-option {
+            background-color: var(--dark);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .package-option:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .package-option.active {
+            border: 2px solid var(--accent);
+            background-color: rgba(91, 201, 91, 0.1);
+        }
+        
+        .option-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .option-header h4 {
+            color: var(--light);
+            font-size: 1.1rem;
+        }
+        
+        .option-price {
+            color: var(--accent-light);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .option-features p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin: 0.3rem 0;
+        }
+        
+        /* Order Summary */
+        .order-summary {
+            background-color: var(--dark);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .order-summary h4 {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .summary-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            color: #ccc;
+        }
+        
+        .summary-row.total {
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light-gray);
+            font-weight: 700;
+            color: var(--light);
+        }
+        
+        .total-price {
+            color: var(--accent-light);
+            font-size: 1.2rem;
+        }
+        
+        /* Gamertag Input */
+        .gamertag-input {
+            margin: 1.5rem 0;
+        }
+        
+        .gamertag-input label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+        
+        .gamertag-input input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background-color: var(--darker);
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            color: var(--light);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        
+        .gamertag-input input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(91, 201, 91, 0.3);
+        }
+        
+        /* Payment Methods */
+        .payment-methods {
+            margin: 1.5rem 0;
+        }
+        
+        .payment-methods h4 {
+            color: var(--light);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .method-options {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .method-option {
+            flex: 1;
+            background-color: var(--darker);
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            padding: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .method-option i {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #aaa;
+        }
+        
+        .method-option span {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .method-option.active {
+            border-color: var(--accent);
+            background-color: rgba(91, 201, 91, 0.1);
+        }
+        
+        .method-option.active i,
+        .method-option.active span {
+            color: var(--accent);
+        }
+        
+        /* Checkout Button */
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        
+        .security-notice {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: #aaa;
+            font-size: 0.8rem;
+        }
+        
+        .security-notice i {
+            color: var(--accent);
+        }
+        
+        /* Account Details */
+        .account-details {
+            margin: 1.5rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+            font-size: 0.9rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background-color: var(--darker);
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            color: var(--light);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(91, 201, 91, 0.3);
+        }
+        
+        .security-notice.warning {
+            background-color: rgba(255, 166, 0, 0.1);
+            border-left: 3px solid orange;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .security-notice.warning i {
+            color: orange;
+            font-size: 1.5rem;
+        }
+        
+        .security-notice.warning div {
+            flex: 1;
+            color: #ccc;
+            font-size: 0.85rem;
+        }
+        
+        .security-notice.warning strong {
+            color: orange;
+        }
+        
+        .security-notice.warning ul {
+            margin: 0.5rem 0 0.5rem 1.2rem;
+        }
+        
+        .completion-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: #aaa;
+            font-size: 0.9rem;
+            justify-content: center;
+        }
+        
+        .completion-time i {
+            color: var(--accent);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .package-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .package-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .method-options {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1093,19 +1450,19 @@
     <section class="stats">
         <div class="stats-container">
             <div class="stat-item fade-in">
-                <div class="stat-number">25,000+</div>
-                <div class="stat-label">Satisfied Customers</div>
+                <div class="stat-number">100M+</div>
+                <div class="stat-label">Modded Gamerscore</div>
             </div>
             <div class="stat-item fade-in delay-1">
-                <div class="stat-number">5.2M+</div>
+                <div class="stat-number">1.2M+</div>
                 <div class="stat-label">Followers Delivered</div>
             </div>
             <div class="stat-item fade-in delay-2">
-                <div class="stat-number">1,200+</div>
+                <div class="stat-number">400+</div>
                 <div class="stat-label">Rare Gamertags Claimed</div>
             </div>
             <div class="stat-item fade-in delay-3">
-                <div class="stat-number">99.8%</div>
+                <div class="stat-number">99.9%</div>
                 <div class="stat-label">Success Rate</div>
             </div>
         </div>
@@ -1142,33 +1499,33 @@
                 </button>
             </div>
             
-<div class="service-grid">
-    <!-- Follower Packages -->
-    <div class="service-card">
-        <div class="service-card-popular">Most Popular</div>
-        <div class="service-card-header">
-            <h3>Xbox Followers</h3>
-            <p>Instant follower delivery</p>
-        </div>
-        <div class="service-card-body">
-            <div class="price-tag">
-                $19.99 <span>/ 1,000 followers</span>
-            </div>
-            <ul class="features-list">
-                <li>Guaranteed real-looking followers</li>
-                <li>Instant delivery after payment</li>
-                <li>24/7 customer support</li>
-                <li>100% safe and undetectable</li>
-                <li>No password required</li>
-            </ul>
-            <div class="service-card-footer">
-                <a href="#" class="btn btn-primary">
-                    <i class="fas fa-shopping-cart"></i>
-                    Purchase Now
-                </a>
-            </div>
-        </div>
-    </div>
+            <div class="service-grid">
+                <!-- Follower Packages -->
+                <div class="service-card">
+                    <div class="service-card-popular">Most Popular</div>
+                    <div class="service-card-header">
+                        <h3>Xbox Followers</h3>
+                        <p>Instant follower delivery</p>
+                    </div>
+                    <div class="service-card-body">
+                        <div class="price-tag">
+                            $2.99 <span>/ 1,000 followers</span>
+                        </div>
+                        <ul class="features-list">
+                            <li>Guaranteed real-looking followers</li>
+                            <li>Instant delivery after payment</li>
+                            <li>24/7 customer support</li>
+                            <li>100% safe and undetectable</li>
+                            <li>No password required</li>
+                        </ul>
+                        <div class="service-card-footer">
+                            <a href="#" class="btn btn-primary followers-purchase-btn">
+                                <i class="fas fa-shopping-cart"></i>
+                                Purchase now
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Gamerscore Boost -->
                 <div class="service-card">
@@ -1178,19 +1535,18 @@
                     </div>
                     <div class="service-card-body">
                         <div class="price-tag">
-                            $29.99 <span>/ 5,000 GS</span>
+                            $9.99 <span>/ 50,000 GS</span>
                         </div>
                         <ul class="features-list">
                             <li>Fast achievement unlocking</li>
                             <li>Customizable GS amount</li>
-                            <li>Undetectable by Microsoft</li>
                             <li>Works on all Xbox consoles</li>
-                            <li>Complete in 24-48 hours</li>
+                            <li>Complete in 10 minutes</li>
                         </ul>
                         <div class="service-card-footer">
-                            <a href="#" class="btn btn-primary">
+                            <a href="#" class="btn btn-primary gamerscore-purchase-btn">
                                 <i class="fas fa-shopping-cart"></i>
-                                Purchase Now
+                                Purchase now
                             </a>
                         </div>
                     </div>
@@ -1200,19 +1556,18 @@
                 <div class="service-card">
                     <div class="service-card-popular">Limited</div>
                     <div class="service-card-header">
-                        <h3>Rare Gamertags</h3>
+                        <h3>Gamertag Autoclaimer</h3>
                         <p>Exclusive usernames</p>
                     </div>
                     <div class="service-card-body">
                         <div class="price-tag">
-                            $99.99 <span>/ single tag</span>
+                            $19.99 <span>/ week</span>
                         </div>
                         <ul class="features-list">
-                            <li>1-3 character gamertags</li>
+                            <li>3-4 letter gamertags</li>
                             <li>Dictionary words</li>
                             <li>OG and rare names</li>
-                            <li>Full ownership transfer</li>
-                            <li>100% legit acquisition</li>
+                            <li>Full ownership after claimed</li>
                         </ul>
                         <div class="service-card-footer">
                             <a href="#" class="btn btn-primary">
@@ -1226,19 +1581,19 @@
                 <!-- Auto View Bot -->
                 <div class="service-card">
                     <div class="service-card-header">
-                        <h3>Auto View Bot</h3>
-                        <p>Boost your streams</p>
+                        <h3>LFG Post Spammer</h3>
+                        <p>Spam anything on Xbox LFGs</p>
                     </div>
                     <div class="service-card-body">
                         <div class="price-tag">
-                            $14.99 <span>/ month</span>
+                            $19.99 <span>/ week</span>
                         </div>
                         <ul class="features-list">
-                            <li>500+ concurrent viewers</li>
-                            <li>Works on Mixer & Twitch</li>
-                            <li>Custom viewer count</li>
+                            <li>Works on phone & PC</li>
+                            <li>We upload accounts/tokens</li>
+                            <li>Works on any game LFGs</li>
                             <li>24/7 uptime</li>
-                            <li>Undetectable technology</li>
+                            <li>Posts stay on top always</li>
                         </ul>
                         <div class="service-card-footer">
                             <a href="#" class="btn btn-primary">
@@ -1252,24 +1607,78 @@
                 <!-- Account Verification -->
                 <div class="service-card">
                     <div class="service-card-header">
-                        <h3>Verification Badge</h3>
-                        <p>Official status symbol</p>
+                        <h3>Follower Bot Panel</h3>
+                        <p>Send bot followers to any gamertag</p>
                     </div>
                     <div class="service-card-body">
                         <div class="price-tag">
-                            $249.99 <span>/ one-time</span>
+                            $19.99 <span>/ week</span>
                         </div>
                         <ul class="features-list">
-                            <li>Verified Xbox profile</li>
-                            <li>Permanent verification</li>
-                            <li>Works with existing account</li>
-                            <li>Priority customer support</li>
-                            <li>100% success rate</li>
+                            <li>Works on phone & PC</li>
+                            <li>Send 5,000 followers daily to any account</li>
+                            <li>Custom delivery speed control</li>
+                            <li>Complete anonymity guaranteed</li>
+                            <li>24/7 priority support</li>
                         </ul>
                         <div class="service-card-footer">
                             <a href="#" class="btn btn-primary">
                                 <i class="fas fa-shopping-cart"></i>
                                 Get Verified
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card-header">
+                        <h3>Message Spammer Panel</h3>
+                        <p>Spam messages to gamertag</p>
+                    </div>
+                    <div class="service-card-body">
+                        <div class="price-tag">
+                            $19.99 <span>/ week</span>
+                        </div>
+                        <ul class="features-list">
+                            <li>Works on phone & PC</li>
+                            <li>Spam 5,000 followers daily to any account</li>
+                            <li>Custom delivery speed control</li>
+                            <li>Complete anonymity guaranteed</li>
+                            <li>24/7 priority support</li>
+                        </ul>
+                        <div class="service-card-footer">
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                Get Verified
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card-popular">OG STYLE</div>
+                    <div class="service-card-header">
+                        <h3>Xbox 360 Profile Picture</h3>
+                        <p>Classic gamer avatar</p>
+                    </div>
+                    <div class="service-card-body">
+                        <div class="price-tag">
+                            $4.99 <span>/ custom picture</span>
+                        </div>
+                        <div class="preview-image" style="text-align: center; margin: 1rem 0;">
+                            <img src="https://download.xboxgamer.pics/titles/4d4707d1/200c4.png" alt="OG Xbox 360 avatar" style="width: 150px; height: 150px; border-radius: 5px; border: 3px solid var(--accent);">
+                        </div>
+                        <ul class="features-list">
+                            <li>Authentic Xbox 360 square format</li>
+                            <li>Choose from 32,000+ OG pictures</li>
+                            <li>Looks like OG player</li>
+                            <li>Immediate delivery</li>
+                            <li>Works on any Xbox gamertag</li>
+                        </ul>
+                        <div class="service-card-footer">
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-image"></i>
+                                Get OG Avatar
                             </a>
                         </div>
                     </div>
@@ -1380,7 +1789,7 @@
                         </div>
                     </div>
                     <div class="testimonial-content">
-                        "I was skeptical at first but they delivered exactly what they promised. Scored the gamertag 'Nova' which I've wanted for years. Worth every penny!"
+                        "I was skeptical at first but they delivered exactly what they promised. Scored the gamertag which I've wanted for years. Worth every penny!"
                     </div>
                 </div>
 
@@ -1399,7 +1808,7 @@
                         </div>
                     </div>
                     <div class="testimonial-content">
-                        "The gamerscore boost was insane! Went from 15k to 50k in two days with all achievements looking legit. My friends think I'm some gaming god now."
+                        "The gamerscore boost was insane! Went from 15k to 65k in 5 minutes with all achievements looking legit. My friends think I'm some gaming god now."
                     </div>
                 </div>
             </div>
@@ -1415,9 +1824,8 @@
             </div>
 
             <div class="preview-container fade-in">
-                <img src="https://i.imgur.com/JqYeZRn.png" alt="Xbox profile with 50k followers" class="preview-image">
                 <h3>From 200 to 50,000 Followers in 24 Hours</h3>
-                <p>This customer used our premium follower package to instantly boost their social proof and attract organic followers.</p>
+                <p>Customer used our premium follower package to instantly boost their social proof and attract organic followers.</p>
                 <a href="#services" class="btn btn-primary" style="margin-top: 1.5rem;">
                     <i class="fas fa-bolt"></i>
                     Get Yours Now
@@ -1452,7 +1860,7 @@
                     </div>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            <p>Most services begin working immediately after purchase. Follower packages typically complete within 24 hours. Gamerscore boosts take 24-48 hours depending on the amount. Rare gamertags are transferred instantly upon purchase. You'll receive email notifications at each stage of the process.</p>
+                            <p>Most services begin working immediately after purchase. Follower packages typically complete within 24 hours. Gamerscore boosts take 5 minutes - 24 hours depending on the amount. Rare gamertags are transferred  upon purchase. You'll receive email notifications at each stage of the process.</p>
                         </div>
                     </div>
                 </div>
@@ -1463,7 +1871,7 @@
                     </div>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            <p>No, we never ask for your password. For most services, we only need your gamertag. For gamertag transfers, we use Microsoft's official transfer system. Your account security is our top priority.</p>
+                            <p>Yes, we need your password for only some services. For most services, we only need your gamertag. For gamertag transfers, we use gamertag swapper which has 99.9% accuracy.</p>
                         </div>
                     </div>
                 </div>
@@ -1479,16 +1887,6 @@
                     </div>
                 </div>
 
-                <div class="accordion-item fade-in">
-                    <div class="accordion-header">
-                        Can I get banned for using your services?
-                    </div>
-                    <div class="accordion-content">
-                        <div class="accordion-content-inner">
-                            <p>We guarantee our methods are safe when used as directed. Our technology has been refined over years to ensure complete compliance with Xbox's terms of service. However, we cannot account for extreme misuse (like boosting 100k GS in an hour). Stick to our recommended packages for optimal safety.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1510,7 +1908,7 @@
         <div class="footer-content">
             <div class="footer-column">
                 <h3>x3aa Services</h3>
-                <p>Premium Xbox enhancement solutions since 2018. Trusted by over 25,000 customers worldwide.</p>
+                <p>Premium Xbox enhancement solutions since 2023. Trusted by over 8,500 customers worldwide.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-discord"></i></a>
@@ -1562,6 +1960,262 @@
     <!-- Back to Top Button -->
     <div class="back-to-top">
         <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Followers Modal -->
+    <div class="modal-overlay" id="followersModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Xbox Followers Package</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="package-options">
+                    <div class="package-option active" data-amount="1000" data-price="2.99">
+                        <div class="option-header">
+                            <h4>1,000 Followers</h4>
+                            <div class="option-price">$2.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Perfect starter package</p>
+                            <p>Instant delivery</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="2000" data-price="4.99">
+                        <div class="option-header">
+                            <h4>2,000 Followers</h4>
+                            <div class="option-price">$4.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Best value package</p>
+                            <p>17% discount</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="5000" data-price="11.99">
+                        <div class="option-header">
+                            <h4>5,000 Followers</h4>
+                            <div class="option-price">$11.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Popular choice</p>
+                            <p>20% discount</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="10000" data-price="24.99">
+                        <div class="option-header">
+                            <h4>10,000 Followers</h4>
+                            <div class="option-price">$24.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Serious growth</p>
+                            <p>25% discount</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="20000" data-price="44.99">
+                        <div class="option-header">
+                            <h4>20,000 Followers</h4>
+                            <div class="option-price">$44.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Maximum impact</p>
+                            <p>30% discount</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Package:</span>
+                            <span class="selected-package">1,000 Followers</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Price:</span>
+                            <span class="selected-price">$2.99</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span class="total-price">$2.99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="gamertag-input">
+                        <label for="followers-gamertag">Your Gamertag:</label>
+                        <input type="text" id="followers-gamertag" placeholder="Enter your Xbox gamertag" required>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <h4>Payment Method</h4>
+                        <div class="method-options">
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fab fa-cc-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-bitcoin"></i>
+                                <span>Crypto</span>
+                            </div>
+                            <div class="method-option" data-method="card">
+                                <i class="far fa-credit-card"></i>
+                                <span>Credit Card</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary followers-checkout-btn">
+                        <i class="fas fa-lock"></i>
+                        Complete Purchase
+                    </button>
+                    
+                    <div class="security-notice">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>All payments are secure and encrypted</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gamerscore Modal -->
+    <div class="modal-overlay" id="gamerscoreModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Gamerscore Boost Package</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="package-options">
+                    <div class="package-option active" data-amount="50000" data-price="9.99">
+                        <div class="option-header">
+                            <h4>50,000 GS</h4>
+                            <div class="option-price">$9.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Perfect starter boost</p>
+                            <p>Completed in 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="200000" data-price="19.99">
+                        <div class="option-header">
+                            <h4>200,000 GS</h4>
+                            <div class="option-price">$19.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Serious profile upgrade</p>
+                            <p>20% discount</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="500000" data-price="29.99">
+                        <div class="option-header">
+                            <h4>500,000 GS</h4>
+                            <div class="option-price">$29.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Elite status</p>
+                            <p>25% discount</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="1000000" data-price="49.99">
+                        <div class="option-header">
+                            <h4>1,000,000 GS</h4>
+                            <div class="option-price">$49.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Legendary achievement</p>
+                            <p>30% discount</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Package:</span>
+                            <span class="selected-package">50,000 GS</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Price:</span>
+                            <span class="selected-price">$9.99</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span class="total-price">$9.99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-details">
+                        <h4>Account Information</h4>
+                        <div class="form-group">
+                            <label for="gamerscore-gamertag">Gamertag:</label>
+                            <input type="text" id="gamerscore-gamertag" placeholder="Your Xbox gamertag" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gamerscore-email">Account Email:</label>
+                            <input type="email" id="gamerscore-email" placeholder="Email linked to Xbox account" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gamerscore-password">Account Password:</label>
+                            <input type="password" id="gamerscore-password" placeholder="Xbox account password" required>
+                        </div>
+                        
+                        <div class="security-notice warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <strong>Important:</strong> You must disable all security measures before purchase:
+                                <ul>
+                                    <li>Disable Two-Factor Authentication (2FA)</li>
+                                    <li>Remove Authenticator apps</li>
+                                    <li>Disable login approvals</li>
+                                </ul>
+                                We cannot complete the boost if these are active.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <h4>Payment Method</h4>
+                        <div class="method-options">
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fab fa-cc-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-bitcoin"></i>
+                                <span>Crypto</span>
+                            </div>
+                            <div class="method-option" data-method="card">
+                                <i class="far fa-credit-card"></i>
+                                <span>Credit Card</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary gamerscore-checkout-btn">
+                        <i class="fas fa-lock"></i>
+                        Complete Purchase
+                    </button>
+                    
+                    <div class="security-notice">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Your credentials are encrypted and never stored</span>
+                    </div>
+                    
+                    <div class="completion-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Completion time: <strong>24 hours</strong> after payment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -1659,6 +2313,123 @@
                         });
                     }
                 });
+            });
+
+            // Followers Modal Functionality
+            const followersModal = document.getElementById('followersModal');
+            const followersButtons = document.querySelectorAll('.followers-purchase-btn');
+            
+            followersButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    followersModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Gamerscore Modal Functionality
+            const gamerscoreModal = document.getElementById('gamerscoreModal');
+            const gamerscoreButtons = document.querySelectorAll('.gamerscore-purchase-btn');
+            
+            gamerscoreButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    gamerscoreModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close modals
+            document.querySelectorAll('.modal-close').forEach(closeBtn => {
+                closeBtn.addEventListener('click', function() {
+                    this.closest('.modal-overlay').style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            // Close modals when clicking outside
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Package selection for both modals
+            document.querySelectorAll('.package-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const modal = this.closest('.modal-overlay');
+                    // Remove active class from all options in this modal
+                    modal.querySelectorAll('.package-option').forEach(opt => opt.classList.remove('active'));
+                    // Add active class to clicked option
+                    this.classList.add('active');
+                    
+                    // Update order summary
+                    const amount = this.dataset.amount;
+                    const price = this.dataset.price;
+                    const isFollowers = modal.id === 'followersModal';
+                    
+                    modal.querySelector('.selected-package').textContent = isFollowers ? `${amount} Followers` : `${amount} GS`;
+                    modal.querySelector('.selected-price').textContent = `$${price}`;
+                    modal.querySelector('.total-price').textContent = `$${price}`;
+                });
+            });
+            
+            // Payment method selection for both modals
+            document.querySelectorAll('.method-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const modal = this.closest('.modal-overlay');
+                    // Remove active class from all options in this modal
+                    modal.querySelectorAll('.method-option').forEach(opt => opt.classList.remove('active'));
+                    // Add active class to clicked option
+                    this.classList.add('active');
+                });
+            });
+            
+            // Followers checkout button
+            document.querySelector('.followers-checkout-btn').addEventListener('click', function() {
+                const gamertag = document.getElementById('followers-gamertag').value;
+                const selectedPackage = followersModal.querySelector('.package-option.active');
+                const paymentMethod = followersModal.querySelector('.method-option.active').dataset.method;
+                
+                if (!gamertag) {
+                    alert('Please enter your gamertag');
+                    return;
+                }
+                
+                const amount = selectedPackage.dataset.amount;
+                const price = selectedPackage.dataset.price;
+                
+                // Here you would normally process the payment
+                alert(`Processing order for ${amount} followers to ${gamertag} for $${price} via ${paymentMethod}`);
+                
+                // Close modal after "processing"
+                followersModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Gamerscore checkout button
+            document.querySelector('.gamerscore-checkout-btn').addEventListener('click', function() {
+                const gamertag = document.getElementById('gamerscore-gamertag').value;
+                const email = document.getElementById('gamerscore-email').value;
+                const password = document.getElementById('gamerscore-password').value;
+                const selectedPackage = gamerscoreModal.querySelector('.package-option.active');
+                const paymentMethod = gamerscoreModal.querySelector('.method-option.active').dataset.method;
+                
+                if (!gamertag || !email || !password) {
+                    alert('Please fill in all account details');
+                    return;
+                }
+                
+                const amount = selectedPackage.dataset.amount;
+                const price = selectedPackage.dataset.price;
+                
+                // Here you would normally process the payment
+                alert(`Processing ${amount} GS boost for ${gamertag} (${email}) for $${price} via ${paymentMethod}\n\nNote: This will be completed within 24 hours`);
+                
+                // Close modal after "processing"
+                gamerscoreModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             });
         });
     </script>
