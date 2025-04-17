@@ -10,1406 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #107C10;
-            --primary-dark: #0a5a09;
-            --accent: #5bc95b;
-            --accent-light: #7cff7c;
-            --dark: #0f0f0f;
-            --darker: #080808;
-            --light: #f0f0f0;
-            --gray: #222;
-            --light-gray: #444;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --glow: 0 0 15px rgba(91, 201, 91, 0.8);
-            --neon: 0 0 10px rgba(91, 201, 91, 0.7), 0 0 20px rgba(91, 201, 91, 0.5);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-        
-        /* Header */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-            background-color: rgba(8,8,8,0.95);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: var(--transition);
-        }
-        
-        .navbar.scrolled {
-            padding: 1rem 5%;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .logo i {
-            font-size: 1.5rem;
-            color: var(--accent-light);
-        }
-        
-        .logo span {
-            color: white;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            font-size: 0.95rem;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-        
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            padding: 0.7rem 1.8rem;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: var(--neon);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .cta-button:hover::before {
-            left: 100%;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--glow);
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 12rem 5% 6rem;
-            background: linear-gradient(135deg, rgba(11,11,11,0.9) 0%, rgba(15,15,15,0.95) 100%), 
-                        url('https://images.unsplash.com/photo-1605899435973-ca2d1a8861cf?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.7) 100%);
-            z-index: 0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1px;
-        }
-        
-        .hero h1 span {
-            color: var(--accent);
-            position: relative;
-            text-shadow: var(--neon);
-            animation: neon-pulse 2s infinite alternate;
-        }
-        
-        @keyframes neon-pulse {
-            0% { text-shadow: 0 0 10px rgba(91, 201, 91, 0.7), 0 0 20px rgba(91, 201, 91, 0.5); }
-            100% { text-shadow: 0 0 15px rgba(91, 201, 91, 0.9), 0 0 30px rgba(91, 201, 91, 0.7); }
-        }
-        
-        .hero h1 span::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 3px;
-        }
-        
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            color: #ccc;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            padding: 0.9rem 2.2rem;
-            border-radius: 5px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.95rem;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            box-shadow: var(--neon);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--glow);
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--light);
-            border: 2px solid var(--light-gray);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(91, 201, 91, 0.2);
-        }
-        
-        /* Stats Section */
-        .stats {
-            padding: 4rem 5%;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .stats::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-            opacity: 0.1;
-            z-index: 0;
-        }
-        
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .stat-item {
-            flex: 1;
-            min-width: 150px;
-            padding: 1.5rem;
-            background-color: rgba(0,0,0,0.2);
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: var(--transition);
-        }
-        
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--glow);
-            background-color: rgba(0,0,0,0.3);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 0.5rem;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .stat-label {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.9);
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 6rem 5%;
-            background-color: var(--darker);
-            position: relative;
-        }
-        
-        .services::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent 0%, var(--dark) 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-header h2 {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
-        }
-        
-        .section-header p {
-            color: #aaa;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .service-tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-        
-        .tab-button {
-            padding: 0.8rem 1.5rem;
-            background-color: var(--gray);
-            color: var(--light);
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .tab-button.active, .tab-button:hover {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            box-shadow: 0 5px 15px rgba(91, 201, 91, 0.3);
-        }
-        
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background-color: var(--gray);
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-            border-color: var(--accent);
-        }
-        
-        .service-card-popular {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 1;
-            box-shadow: 0 3px 10px rgba(91, 201, 91, 0.3);
-        }
-        
-        .service-card-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            position: relative;
-        }
-        
-        .service-card-header h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-        }
-        
-        .service-card-header p {
-            color: #aaa;
-        }
-        
-        .service-card-body {
-            padding: 1.5rem;
-        }
-        
-        .price-tag {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-light);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: flex-end;
-            gap: 0.5rem;
-        }
-        
-        .price-tag span {
-            font-size: 1rem;
-            color: #aaa;
-            font-weight: 400;
-        }
-        
-        .features-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .features-list li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding-left: 1.8rem;
-        }
-        
-        .features-list li::before {
-            content: '✓';
-            color: var(--accent);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-        
-        .service-card-footer {
-            padding: 0 1.5rem 1.5rem;
-        }
-        
-        /* How It Works */
-        .how-it-works {
-            padding: 6rem 5%;
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
-            position: relative;
-        }
-        
-        .how-it-works::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to bottom, var(--darker) 0%, transparent 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .steps-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .step-card {
-            flex: 1;
-            min-width: 250px;
-            background-color: var(--gray);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.05);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .step-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-        
-        .step-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border-color: var(--accent);
-        }
-        
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 5px 15px rgba(91, 201, 91, 0.3);
-        }
-        
-        .step-card h3 {
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-        
-        .step-card p {
-            color: #aaa;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            padding: 6rem 5%;
-            background-color: var(--darker);
-            position: relative;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .testimonial-card {
-            background-color: var(--gray);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border-color: var(--accent);
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 5rem;
-            color: rgba(255,255,255,0.05);
-            font-family: serif;
-            line-height: 1;
-        }
-        
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .testimonial-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent);
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-        }
-        
-        .testimonial-rating {
-            color: #ffc107;
-            margin-top: 0.3rem;
-            font-size: 0.9rem;
-        }
-        
-        .testimonial-content {
-            color: #ccc;
-            font-style: italic;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Preview Section */
-        .preview {
-            padding: 6rem 5%;
-            text-align: center;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
-        }
-        
-        .preview-container {
-            margin-top: 3rem;
-            background-color: var(--gray);
-            border-radius: 10px;
-            padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.05);
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            transition: var(--transition);
-        }
-        
-        .preview-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-            border-color: var(--accent);
-        }
-        
-        .preview-image {
-            max-width: 100%;
-            border-radius: 5px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .preview-image:hover {
-            transform: scale(1.02);
-        }
-        
-        /* FAQ Section */
-        .faq {
-            padding: 6rem 5%;
-            background-color: var(--darker);
-        }
-        
-        .accordion {
-            max-width: 800px;
-            margin: 2rem auto 0;
-        }
-        
-        .accordion-item {
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 5px;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-        
-        .accordion-item:hover {
-            border-color: var(--accent);
-        }
-        
-        .accordion-header {
-            padding: 1.5rem;
-            background-color: var(--gray);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .accordion-header:hover {
-            background-color: var(--light-gray);
-        }
-        
-        .accordion-header::after {
-            content: '+';
-            font-size: 1.5rem;
-            transition: var(--transition);
-            color: var(--accent);
-        }
-        
-        .accordion-header.active::after {
-            content: '-';
-            color: var(--accent-light);
-        }
-        
-        .accordion-content {
-            padding: 0 1.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background-color: var(--gray);
-        }
-        
-        .accordion-content-inner {
-            padding: 0 0 1.5rem;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            padding: 6rem 5%;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-            opacity: 0.1;
-            z-index: 0;
-        }
-        
-        .cta-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .cta-section h2 {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            margin-bottom: 1.5rem;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            color: rgba(255,255,255,0.9);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--darker);
-            padding: 4rem 5% 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            position: relative;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .footer-column h3 {
-            color: var(--light);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-links a {
-            color: #aaa;
-            text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--gray);
-            color: var(--light);
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(91, 201, 91, 0.3);
-        }
-        
-        .newsletter-form {
-            margin-top: 1.5rem;
-        }
-        
-        .newsletter-input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            background-color: var(--dark);
-            border: 1px solid var(--light-gray);
-            border-radius: 5px;
-            color: var(--light);
-            margin-bottom: 0.8rem;
-            transition: var(--transition);
-        }
-        
-        .newsletter-input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px rgba(91, 201, 91, 0.3);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            opacity: 0;
-            visibility: hidden;
-            z-index: 999;
-            box-shadow: var(--neon);
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            transform: translateY(-5px);
-        }
-        
-        /* Floating Particles */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: float linear infinite;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            50% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
-        }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem 5%;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .hero {
-                padding: 10rem 5% 4rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .steps-container {
-                flex-direction: column;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                gap: 2rem;
-            }
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-        
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-        
-        /* Glow Animation */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(91, 201, 91, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(91, 201, 91, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(91, 201, 91, 0); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        /* Modal Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.8);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(5px);
-        }
-        
-        .modal-content {
-            background-color: var(--gray);
-            border-radius: 10px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid var(--accent);
-            box-shadow: 0 0 30px rgba(91, 201, 91, 0.3);
-            animation: modalFadeIn 0.3s ease-out;
-        }
-        
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .modal-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-        
-        .modal-header h3 {
-            color: var(--accent);
-            font-size: 1.5rem;
-        }
-        
-        .modal-close {
-            background: none;
-            border: none;
-            color: #aaa;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: var(--transition);
-            line-height: 1;
-        }
-        
-        .modal-close:hover {
-            color: var(--accent);
-            transform: rotate(90deg);
-        }
-        
-        .modal-body {
-            padding: 1.5rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-        
-        /* Package Options */
-        .package-options {
-            display: grid;
-            height: 10%;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-        
-        .package-option {
-            background-color: var(--dark);
-            border: 1px solid var(--light-gray);
-            border-radius: 8px;
-            padding: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .package-option:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .package-option.active {
-            border: 2px solid var(--accent);
-            background-color: rgba(91, 201, 91, 0.1);
-        }
-        
-        .option-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-        
-        .option-header h4 {
-            color: var(--light);
-            font-size: 1.1rem;
-        }
-        
-        .option-price {
-            color: var(--accent-light);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        
-        .option-features p {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin: 0.3rem 0;
-        }
-        
-        /* Order Summary */
-        .order-summary {
-            background-color: var(--dark);
-            border-radius: 8px;
-            padding: 1.5rem;
-            border: 1px solid var(--light-gray);
-        }
-        
-        .order-summary h4 {
-            color: var(--light);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        .summary-details {
-            margin-bottom: 1.5rem;
-        }
-        
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.8rem;
-            color: #ccc;
-        }
-        
-        .summary-row.total {
-            margin-top: 1.2rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--light-gray);
-            font-weight: 700;
-            color: var(--light);
-        }
-        
-        .total-price {
-            color: var(--accent-light);
-            font-size: 1.2rem;
-        }
-        
-        /* Gamertag Input */
-        .gamertag-input {
-            margin: 1.5rem 0;
-        }
-        
-        .gamertag-input label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--light);
-        }
-        
-        .gamertag-input input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            background-color: var(--darker);
-            border: 1px solid var(--light-gray);
-            border-radius: 5px;
-            color: var(--light);
-            font-family: inherit;
-            transition: var(--transition);
-        }
-        
-        .gamertag-input input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px rgba(91, 201, 91, 0.3);
-        }
-        
-        /* Payment Methods */
-        .payment-methods {
-            margin: 1.5rem 0;
-        }
-        
-        .payment-methods h4 {
-            color: var(--light);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-        
-        .method-options {
-            display: flex;
-            gap: 0.8rem;
-        }
-        
-        .method-option {
-            flex: 1;
-            background-color: var(--darker);
-            border: 1px solid var(--light-gray);
-            border-radius: 5px;
-            padding: 0.8rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .method-option i {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: #aaa;
-        }
-        
-        .method-option span {
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        
-        .method-option.active {
-            border-color: var(--accent);
-            background-color: rgba(91, 201, 91, 0.1);
-        }
-        
-        .method-option.active i,
-        .method-option.active span {
-            color: var(--accent);
-        }
-        
-        /* Checkout Button */
-        .checkout-btn {
-            width: 100%;
-            padding: 1rem;
-            font-size: 1.1rem;
-            margin-top: 1rem;
-        }
-        
-        .security-notice {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            color: #aaa;
-            font-size: 0.8rem;
-        }
-        
-        .security-notice i {
-            color: var(--accent);
-        }
-        
-        /* Account Details */
-        .account-details {
-            margin: 1.5rem 0;
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--light);
-            font-size: 0.9rem;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            background-color: var(--darker);
-            border: 1px solid var(--light-gray);
-            border-radius: 5px;
-            color: var(--light);
-            font-family: inherit;
-            transition: var(--transition);
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px rgba(91, 201, 91, 0.3);
-        }
-        
-        .security-notice.warning {
-            background-color: rgba(255, 166, 0, 0.1);
-            border-left: 3px solid orange;
-            padding: 1rem;
-            margin: 1.5rem 0;
-            border-radius: 5px;
-            display: flex;
-            gap: 0.8rem;
-        }
-        
-        .security-notice.warning i {
-            color: orange;
-            font-size: 1.5rem;
-        }
-        
-        .security-notice.warning div {
-            flex: 1;
-            color: #ccc;
-            font-size: 0.85rem;
-        }
-        
-        .security-notice.warning strong {
-            color: orange;
-        }
-        
-        .security-notice.warning ul {
-            margin: 0.5rem 0 0.5rem 1.2rem;
-        }
-        
-        .completion-time {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            color: #aaa;
-            font-size: 0.9rem;
-            justify-content: center;
-        }
-        
-        .completion-time i {
-            color: var(--accent);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .modal-body {
-                grid-template-columns: 1fr;
-            }
-            
-            .package-options {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .package-options {
-                grid-template-columns: 1fr;
-            }
-            
-            .method-options {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="index-style.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <script src="index-script.js"></script>
     <nav class="navbar">
         <div class="logo">
             <i class="fas fa-gamepad"></i>
@@ -1427,7 +31,6 @@
         </a>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="particles" id="particles"></div>
         <div class="hero-content">
@@ -1446,7 +49,6 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
     <section class="stats">
         <div class="stats-container">
             <div class="stat-item fade-in">
@@ -1468,7 +70,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="services">
         <div class="section-container">
             <div class="section-header">
@@ -1500,7 +101,6 @@
             </div>
             
             <div class="service-grid">
-                <!-- Follower Packages -->
                 <div class="service-card">
                     <div class="service-card-popular">Most Popular</div>
                     <div class="service-card-header">
@@ -1527,7 +127,6 @@
                     </div>
                 </div>
 
-                <!-- Gamerscore Boost -->
                 <div class="service-card">
                     <div class="service-card-header">
                         <h3>Gamerscore Boost</h3>
@@ -1552,7 +151,6 @@
                     </div>
                 </div>
 
-                <!-- Rare Gamertags -->
                 <div class="service-card">
                     <div class="service-card-popular">Limited</div>
                     <div class="service-card-header">
@@ -1570,15 +168,14 @@
                             <li>Full ownership after claimed</li>
                         </ul>
                         <div class="service-card-footer">
-                            <a href="#" class="btn btn-primary">
+                            <a href="#" class="btn btn-primary gamertag-purchase-btn">
                                 <i class="fas fa-shopping-cart"></i>
-                                Browse Tags
+                                Purchase now
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Auto View Bot -->
                 <div class="service-card">
                     <div class="service-card-header">
                         <h3>LFG Post Spammer</h3>
@@ -1590,21 +187,19 @@
                         </div>
                         <ul class="features-list">
                             <li>Works on phone & PC</li>
-                            <li>We upload accounts/tokens</li>
                             <li>Works on any game LFGs</li>
                             <li>24/7 uptime</li>
                             <li>Posts stay on top always</li>
                         </ul>
                         <div class="service-card-footer">
-                            <a href="#" class="btn btn-primary">
+                            <a href="#" class="btn btn-primary lfg-purchase-btn">
                                 <i class="fas fa-shopping-cart"></i>
-                                Subscribe Now
+                                Purchase now
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Account Verification -->
                 <div class="service-card">
                     <div class="service-card-header">
                         <h3>Follower Bot Panel</h3>
@@ -1616,15 +211,14 @@
                         </div>
                         <ul class="features-list">
                             <li>Works on phone & PC</li>
-                            <li>Send 5,000 followers daily to any account</li>
+                            <li>Send 5,000 followers daily</li>
                             <li>Custom delivery speed control</li>
                             <li>Complete anonymity guaranteed</li>
-                            <li>24/7 priority support</li>
                         </ul>
                         <div class="service-card-footer">
-                            <a href="#" class="btn btn-primary">
+                            <a href="#" class="btn btn-primary follower-bot-purchase-btn">
                                 <i class="fas fa-shopping-cart"></i>
-                                Get Verified
+                                Purchase now
                             </a>
                         </div>
                     </div>
@@ -1641,42 +235,37 @@
                         </div>
                         <ul class="features-list">
                             <li>Works on phone & PC</li>
-                            <li>Spam 5,000 followers daily to any account</li>
+                            <li>Send 5,000 messages daily</li>
                             <li>Custom delivery speed control</li>
                             <li>Complete anonymity guaranteed</li>
-                            <li>24/7 priority support</li>
                         </ul>
                         <div class="service-card-footer">
-                            <a href="#" class="btn btn-primary">
+                            <a href="#" class="btn btn-primary message-spammer-purchase-btn">
                                 <i class="fas fa-shopping-cart"></i>
-                                Get Verified
+                                Purchase now
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-card-popular">OG STYLE</div>
+                    <div class="service-card-popular">OG Style</div>
                     <div class="service-card-header">
                         <h3>Xbox 360 Profile Picture</h3>
-                        <p>Classic gamer avatar</p>
+                        <p>OG gamer avatar</p>
                     </div>
                     <div class="service-card-body">
                         <div class="price-tag">
                             $4.99 <span>/ custom picture</span>
                         </div>
-                        <div class="preview-image" style="text-align: center; margin: 1rem 0;">
-                            <img src="https://download.xboxgamer.pics/titles/4d4707d1/200c4.png" alt="OG Xbox 360 avatar" style="width: 150px; height: 150px; border-radius: 5px; border: 3px solid var(--accent);">
-                        </div>
                         <ul class="features-list">
                             <li>Authentic Xbox 360 square format</li>
                             <li>Choose from 32,000+ OG pictures</li>
-                            <li>Looks like OG player</li>
+                            <li>Look like OG player</li>
                             <li>Immediate delivery</li>
-                            <li>Works on any Xbox gamertag</li>
                         </ul>
                         <div class="service-card-footer">
-                            <a href="#" class="btn btn-primary">
+                            <a href="#" class="btn btn-primary profile-picture-purchase-btn">
                                 <i class="fas fa-image"></i>
                                 Get OG Avatar
                             </a>
@@ -1684,7 +273,6 @@
                     </div>
                 </div>
 
-                <!-- Custom Package -->
                 <div class="service-card">
                     <div class="service-card-header">
                         <h3>Custom Package</h3>
@@ -1699,10 +287,9 @@
                             <li>Bulk order discounts</li>
                             <li>VIP customer manager</li>
                             <li>Priority processing</li>
-                            <li>24/7 direct support</li>
                         </ul>
                         <div class="service-card-footer">
-                            <a href="#" class="btn btn-primary">
+                            <a href="#contact" class="btn btn-primary custom-package-btn">
                                 <i class="fas fa-headset"></i>
                                 Contact Us
                             </a>
@@ -1713,7 +300,6 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
     <section id="how-it-works" class="how-it-works">
         <div class="section-container">
             <div class="section-header">
@@ -1746,7 +332,6 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
         <div class="section-container">
             <div class="section-header">
@@ -1815,7 +400,6 @@
         </div>
     </section>
 
-    <!-- Preview Section -->
     <section id="preview" class="preview">
         <div class="section-container">
             <div class="section-header">
@@ -1834,12 +418,11 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section id="faq" class="faq">
         <div class="section-container">
             <div class="section-header">
                 <h2>Frequently Asked Questions</h2>
-                <p>Everything you need to know about our services</p>
+                <p>Mostly asked questions</p>
             </div>
 
             <div class="accordion">
@@ -1849,7 +432,7 @@
                     </div>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            <p>Absolutely. We use advanced methods that are completely undetectable by Microsoft's systems. All our services are designed to mimic organic growth and activity patterns. In our 5+ years of operation, we've maintained a 99.8% success rate with zero bans when used as directed.</p>
+                            <p>We employ advanced techniques designed to emulate organic growth and activity patterns, significantly reducing the likelihood of detection by Microsoft's systems. Over our 2+ years of operation, we have achieved a high success rate with minimal issues when services are used as directed. However, as with any third-party service interacting with Xbox systems, there is an inherent risk of account restrictions or bans. We take every precaution to minimize this risk, but we cannot guarantee complete immunity from Xbox's enforcement actions.</p>
                         </div>
                     </div>
                 </div>
@@ -1860,7 +443,7 @@
                     </div>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            <p>Most services begin working immediately after purchase. Follower packages typically complete within 24 hours. Gamerscore boosts take 5 minutes - 24 hours depending on the amount. Rare gamertags are transferred  upon purchase. You'll receive email notifications at each stage of the process.</p>
+                            <p>Most services begin working immediately after purchase. Follower packages typically complete within 24 hours. Gamerscore boosts take 5 minutes - 24 hours depending on the amount. Rare gamertags are transferred upon purchase. You'll receive email notifications at each stage of the process.</p>
                         </div>
                     </div>
                 </div>
@@ -1882,16 +465,14 @@
                     </div>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            <p>We accept all major credit cards, PayPal, and cryptocurrencies (Bitcoin, Ethereum, Litecoin). Crypto payments receive a 10% discount. All payments are processed securely through encrypted channels.</p>
+                            <p>We accept all major credit cards, PayPal, Google Pay, cryptocurrencies (Bitcoin, Ethereum, Litecoin). Crypto payments receive a 10% discount. All payments are processed securely through encrypted channels.</p>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-content">
             <h2 class="fade-in">Ready To Dominate Xbox?</h2>
@@ -1903,71 +484,69 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>x3aa Services</h3>
-                <p>Premium Xbox enhancement solutions since 2023. Trusted by over 8,500 customers worldwide.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-column">
-                <h3>Services</h3>
-                <ul class="footer-links">
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Xbox Followers</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Gamerscore Boost</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Rare Gamertags</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> View Bots</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Verification</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Support</h3>
-                <ul class="footer-links">
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Live Chat</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Status</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Refund Policy</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Newsletter</h3>
-                <p>Subscribe for exclusive deals and service updates.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your email" class="newsletter-input" required>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        <i class="fas fa-paper-plane"></i>
-                        Subscribe
-                    </button>
-                </form>
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>x3aa Services</h3>
+            <p>Premium Xbox enhancement solutions since 2023. Trusted by over 8,500 customers worldwide.</p>
+            <div class="social-links">
+                <a href="https://twitter.com/x3aaservices" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://discord.gg/x3aa" target="_blank"><i class="fab fa-discord"></i></a>
+                <a href="https://instagram.com/x3aaservices" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@x3aaservices" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
 
-        <div class="copyright">
-            &copy; 2023 x3aa Services. All rights reserved. Not affiliated with Microsoft or Xbox.
+        <div class="footer-column">
+            <h3>Services</h3>
+            <ul class="footer-links">
+                <li><a href="#services"><i class="fas fa-chevron-right"></i> Xbox Followers</a></li>
+                <li><a href="#services"><i class="fas fa-chevron-right"></i> Gamerscore Boost</a></li>
+                <li><a href="#services"><i class="fas fa-chevron-right"></i> Rare Gamertags</a></li>
+                <li><a href="#services"><i class="fas fa-chevron-right"></i> LFG Post Spammer</a></li>
+                <li><a href="#services"><i class="fas fa-chevron-right"></i> Follower Bot Panel</a></li>
+                <li><a href="#services"><i class="fas fa-chevron-right"></i> Message Spammer Panel</a></li>
+                <li><a href="#services"><i class="fas fa-chevron-right"></i> Xbox 360 Profile Picture</a></li>
+                <li><a href="#services"><i class="fas fa-chevron-right"></i> Custom Package</a></li>
+            </ul>
         </div>
-    </footer>
 
-    <!-- Back to Top Button -->
+        <div class="footer-column">
+            <h3>Support</h3>
+            <ul class="footer-links">
+                <li><a href="/tos"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                <li><a href="/privacy-policy"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                <li><a href="/refund-policy"><i class="fas fa-chevron-right"></i> Refund Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Newsletter</h3>
+            <p>Subscribe for exclusive deals and service updates.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email" class="newsletter-input" required>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-paper-plane"></i>
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="copyright">
+        © <span id="current-year">2025</span> x3aa Services. All rights reserved. Not affiliated with Microsoft or Xbox.
+    </div>
+</footer>
+
     <div class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Followers Modal -->
     <div class="modal-overlay" id="followersModal">
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Xbox Followers Package</h3>
-                <button class="modal-close">&times;</button>
+                <button class="modal-close">×</button>
             </div>
             <div class="modal-body">
                 <div class="package-options">
@@ -2049,6 +628,14 @@
                         <input type="text" id="followers-gamertag" placeholder="Enter your Xbox gamertag" required>
                     </div>
                     
+                    <div class="tos-agreement">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="followers-tos-agreement" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="/tos" target="_blank">Terms of Service</a> and <a href="/refund-policy" target="_blank">Refund Policy</a>
+                        </label>
+                    </div>
+                    
                     <div class="payment-methods">
                         <h4>Payment Method</h4>
                         <div class="method-options">
@@ -2067,10 +654,12 @@
                         </div>
                     </div>
                     
-                    <button class="btn btn-primary followers-checkout-btn">
-                        <i class="fas fa-lock"></i>
-                        Complete Purchase
-                    </button>
+                    <div class="service-card-footer">
+                        <a href="#" class="btn btn-primary followers-purchase-btn">
+                            <i class="fas fa-lock"></i>
+                            Complete purchase
+                        </a>
+                    </div>
                     
                     <div class="security-notice">
                         <i class="fas fa-shield-alt"></i>
@@ -2081,12 +670,11 @@
         </div>
     </div>
 
-    <!-- Gamerscore Modal -->
     <div class="modal-overlay" id="gamerscoreModal">
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Gamerscore Boost Package</h3>
-                <button class="modal-close">&times;</button>
+                <button class="modal-close">×</button>
             </div>
             <div class="modal-body">
                 <div class="package-options">
@@ -2181,6 +769,14 @@
                         </div>
                     </div>
                     
+                    <div class="tos-agreement">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="gamerscore-tos-agreement" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="/tos" target="_blank">Terms of Service</a> and <a href="/refund-policy" target="_blank">Refund Policy</a>
+                        </label>
+                    </div>
+                    
                     <div class="payment-methods">
                         <h4>Payment Method</h4>
                         <div class="method-options">
@@ -2199,10 +795,12 @@
                         </div>
                     </div>
                     
-                    <button class="btn btn-primary gamerscore-checkout-btn">
-                        <i class="fas fa-lock"></i>
-                        Complete Purchase
-                    </button>
+                    <div class="service-card-footer">
+                        <a href="#" class="btn btn-primary gamerscore-purchase-btn">
+                            <i class="fas fa-lock"></i>
+                            Complete purchase
+                        </a>
+                    </div>
                     
                     <div class="security-notice">
                         <i class="fas fa-shield-alt"></i>
@@ -2218,220 +816,836 @@
         </div>
     </div>
 
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            // Back to top button
-            const backToTopButton = document.querySelector('.back-to-top');
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopButton.classList.add('visible');
-                    document.querySelector('.navbar').classList.add('scrolled');
-                } else {
-                    backToTopButton.classList.remove('visible');
-                    document.querySelector('.navbar').classList.remove('scrolled');
-                }
-            });
-            
-            backToTopButton.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-            
-            // Accordion functionality
-            const accordionHeaders = document.querySelectorAll('.accordion-header');
-            
-            accordionHeaders.forEach(header => {
-                header.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    const content = this.nextElementSibling;
+    <div class="modal-overlay" id="gamertagModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Gamertag Autoclaimer Package</h3>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="package-options">
+                    <div class="package-option active" data-amount="daily" data-price="9.99">
+                        <div class="option-header">
+                            <h4>Daily</h4>
+                            <div class="option-price">$9.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to autoclaimer</p>
+                            <p>3-4 letter gamertags</p>
+                            <p>Dictionary words</p>
+                        </div>
+                    </div>
                     
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                    }
-                });
-            });
-            
-            // Tab functionality
-            const tabButtons = document.querySelectorAll('.tab-button');
-            
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    // Here you would add filtering logic for services
-                });
-            });
-            
-            // Create particles
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random position
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100 + 100; // Start below viewport
-                
-                // Random size
-                const size = Math.random() * 3 + 1;
-                
-                // Random animation duration
-                const duration = Math.random() * 20 + 10;
-                
-                // Random delay
-                const delay = Math.random() * 5;
-                
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.opacity = Math.random() * 0.5 + 0.1;
-                
-                particlesContainer.appendChild(particle);
-            }
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
+                    <div class="package-option" data-amount="weekly" data-price="19.99">
+                        <div class="option-header">
+                            <h4>Weekly</h4>
+                            <div class="option-price">$19.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to autoclaimer</p>
+                            <p>Priority queue</p>
+                            <p>71% discount</p>
+                        </div>
+                    </div>
                     
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
+                    <div class="package-option" data-amount="monthly" data-price="49.99">
+                        <div class="option-header">
+                            <h4>Monthly</h4>
+                            <div class="option-price">$49.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to autoclaimer</p>
+                            <p>Priority queue</p>
+                            <p>83% discount</p>
+                        </div>
+                    </div>
                     
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+                    <div class="package-option" data-amount="lifetime" data-price="99.99">
+                        <div class="option-header">
+                            <h4>Lifetime</h4>
+                            <div class="option-price">$99.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to autoclaimer</p>
+                            <p>Priority queue</p>
+                            <p>95% discount</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Package:</span>
+                            <span class="selected-package">Daily</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Price:</span>
+                            <span class="selected-price">$9.99</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span class="total-price">$9.99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-details">
+                        <div class="form-group">
+                            <label for="gamertag-email">Email:</label>
+                            <input type="email" id="gamertag-email" placeholder="example@email.com" required>
+                        </div>
+                        
+                        <div class="security-notice warning">                         
+                           <div>
+                                <p>You will receive the Autoclaimer Tool along with its activation code via email.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tos-agreement">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="gamertag-tos-agreement" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="/tos" target="_blank">Terms of Service</a> and <a href="/refund-policy" target="_blank">Refund Policy</a>
+                        </label>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <h4>Payment Method</h4>
+                        <div class="method-options">
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fab fa-cc-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-bitcoin"></i>
+                                <span>Crypto</span>
+                            </div>
+                            <div class="method-option" data-method="card">
+                                <i class="far fa-credit-card"></i>
+                                <span>Credit Card</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card-footer">
+                        <a href="#" class="btn btn-primary gamertag-purchase-btn">
+                            <i class="fas fa-lock"></i>
+                            Complete purchase
+                        </a>
+                    </div>
+                    
+                    <div class="security-notice">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Your credentials are encrypted and never stored</span>
+                    </div>
+                    
+                    <div class="completion-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Service starts: <strong>Immediately</strong> after payment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            // Followers Modal Functionality
-            const followersModal = document.getElementById('followersModal');
-            const followersButtons = document.querySelectorAll('.followers-purchase-btn');
-            
-            followersButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    followersModal.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-            
-            // Gamerscore Modal Functionality
-            const gamerscoreModal = document.getElementById('gamerscoreModal');
-            const gamerscoreButtons = document.querySelectorAll('.gamerscore-purchase-btn');
-            
-            gamerscoreButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    gamerscoreModal.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-            
-            // Close modals
-            document.querySelectorAll('.modal-close').forEach(closeBtn => {
-                closeBtn.addEventListener('click', function() {
-                    this.closest('.modal-overlay').style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                });
-            });
-            
-            // Close modals when clicking outside
-            document.querySelectorAll('.modal-overlay').forEach(modal => {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                    }
-                });
-            });
-            
-            // Package selection for both modals
-            document.querySelectorAll('.package-option').forEach(option => {
-                option.addEventListener('click', function() {
-                    const modal = this.closest('.modal-overlay');
-                    // Remove active class from all options in this modal
-                    modal.querySelectorAll('.package-option').forEach(opt => opt.classList.remove('active'));
-                    // Add active class to clicked option
-                    this.classList.add('active');
+    <div class="modal-overlay" id="lfgModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>LFG Post Spammer Package</h3>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="package-options">
+                    <div class="package-option active" data-amount="daily" data-price="9.99">
+                        <div class="option-header">
+                            <h4>Daily</h4>
+                            <div class="option-price">$9.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to LFG spammer</p>
+                            <p>Works on any game LFGs</p>
+                            <p>24/7 uptime</p>
+                        </div>
+                    </div>
                     
-                    // Update order summary
-                    const amount = this.dataset.amount;
-                    const price = this.dataset.price;
-                    const isFollowers = modal.id === 'followersModal';
+                    <div class="package-option" data-amount="weekly" data-price="19.99">
+                        <div class="option-header">
+                            <h4>Weekly</h4>
+                            <div class="option-price">$19.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to LFG spammer</p>
+                            <p>Priority queue</p>
+                            <p>71% discount</p>
+                        </div>
+                    </div>
                     
-                    modal.querySelector('.selected-package').textContent = isFollowers ? `${amount} Followers` : `${amount} GS`;
-                    modal.querySelector('.selected-price').textContent = `$${price}`;
-                    modal.querySelector('.total-price').textContent = `$${price}`;
-                });
-            });
+                    <div class="package-option" data-amount="monthly" data-price="49.99">
+                        <div class="option-header">
+                            <h4>Monthly</h4>
+                            <div class="option-price">$49.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to LFG spammer</p>
+                            <p>Priority queue</p>
+                            <p>83% discount</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="lifetime" data-price="99.99">
+                        <div class="option-header">
+                            <h4>Lifetime</h4>
+                            <div class="option-price">$99.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to LFG spammer</p>
+                            <p>Priority queue</p>
+                            <p>95% discount</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Package:</span>
+                            <span class="selected-package">Daily</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Price:</span>
+                            <span class="selected-price">$9.99</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span class="total-price">$9.99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-details">
+                        <div class="form-group">
+                            <label for="lfg-email">Discord username</label>
+                            <input type="email" id="lfg-email" placeholder="Username" required>
+                        </div>
+                        
+                        <div class="security-notice warning">
+                            <div>
+                                <p>You can either join our Discord server to use the bot or we will send an invitation to your username.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tos-agreement">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="lfg-tos-agreement" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="/tos" target="_blank">Terms of Service</a> and <a href="/refund-policy" target="_blank">Refund Policy</a>
+                        </label>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <h4>Payment Method</h4>
+                        <div class="method-options">
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fab fa-cc-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-bitcoin"></i>
+                                <span>Crypto</span>
+                            </div>
+                            <div class="method-option" data-method="card">
+                                <i class="far fa-credit-card"></i>
+                                <span>Credit Card</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card-footer">
+                        <a href="#" class="btn btn-primary lfg-purchase-btn">
+                            <i class="fas fa-lock"></i>
+                            Complete purchase
+                        </a>
+                    </div>
+                    
+                    <div class="security-notice">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Your credentials are encrypted and never stored</span>
+                    </div>
+                    
+                    <div class="completion-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Service starts: <strong>Immediately</strong> after payment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="followerBotModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Follower Bot Panel Package</h3>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="package-options">
+                    <div class="package-option active" data-amount="daily" data-price="9.99">
+                        <div class="option-header">
+                            <h4>Daily</h4>
+                            <div class="option-price">$9.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to follower bot panel</p>
+                            <p>Send 5,000 followers daily</p>
+                            <p>Custom delivery speed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="weekly" data-price="19.99">
+                        <div class="option-header">
+                            <h4>Weekly</h4>
+                            <div class="option-price">$19.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to follower bot panel</p>
+                            <p>Priority support</p>
+                            <p>71% discount</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="monthly" data-price="29.99">
+                        <div class="option-header">
+                            <h4>Monthly</h4>
+                            <div class="option-price">$29.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to follower bot panel</p>
+                            <p>Priority support</p>
+                            <p>90% discount</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="lifetime" data-price="69.99">
+                        <div class="option-header">
+                            <h4>Lifetime</h4>
+                            <div class="option-price">$69.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to follower bot panel</p>
+                            <p>Priority support</p>
+                            <p>98% discount</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Package:</span>
+                            <span class="selected-package">Daily</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Price:</span>
+                            <span class="selected-price">$9.99</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span class="total-price">$9.99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-details">
+                        <div class="form-group">
+                            <label for="follower-bot-email">Discord username</label>
+                            <input type="email" id="follower-bot-email" placeholder="Username" required>
+                        </div>
+                        
+                        <div class="security-notice warning">
+                            <div>
+                                <p>You can either join our Discord server to use the bot or we will send an invitation to your username.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tos-agreement">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="follower-bot-tos-agreement" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="/tos" target="_blank">Terms of Service</a> and <a href="/refund-policy" target="_blank">Refund Policy</a>
+                        </label>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <h4>Payment Method</h4>
+                        <div class="method-options">
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fab fa-cc-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-bitcoin"></i>
+                                <span>Crypto</span>
+                            </div>
+                            <div class="method-option" data-method="card">
+                                <i class="far fa-credit-card"></i>
+                                <span>Credit Card</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card-footer">
+                        <a href="#" class="btn btn-primary follower-bot-purchase-btn">
+                            <i class="fas fa-lock"></i>
+                            Complete purchase
+                        </a>
+                    </div>
+                    
+                    <div class="security-notice">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Your credentials are encrypted and never stored</span>
+                    </div>
+                    
+                    <div class="completion-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Service starts: <strong>Immediately</strong> after payment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="messageSpammerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Message Spammer Panel Package</h3>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="package-options">
+                    <div class="package-option active" data-amount="daily" data-price="9.99">
+                        <div class="option-header">
+                            <h4>Daily</h4>
+                            <div class="option-price">$9.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to message spammer panel</p>
+                            <p>Send 5,000 messages daily</p>
+                            <p>Custom delivery speed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="weekly" data-price="19.99">
+                        <div class="option-header">
+                            <h4>Weekly</h4>
+                            <div class="option-price">$19.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to message spammer panel</p>
+                            <p>Priority support</p>
+                            <p>71% discount</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="monthly" data-price="29.99">
+                        <div class="option-header">
+                            <h4>Monthly</h4>
+                            <div class="option-price">$29.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to message spammer panel</p>
+                            <p>Priority support</p>
+                            <p>90% discount</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-option" data-amount="lifetime" data-price="49.99">
+                        <div class="option-header">
+                            <h4>Lifetime</h4>
+                            <div class="option-price">$49.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Access to message spammer panel</p>
+                            <p>Priority support</p>
+                            <p>99% discount</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Package:</span>
+                            <span class="selected-package">Daily</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Price:</span>
+                            <span class="selected-price">$9.99</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span class="total-price">$9.99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-details">
+                        <div class="form-group">
+                            <label for="message-spammer-email">Discord username</label>
+                            <input type="email" id="message-spammer-email" placeholder="Username" required>
+                        </div>
+                        
+                        <div class="security-notice warning">
+                            <div>
+                                <p>You can either join our Discord server to use the bot or we will send an invitation to your username.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tos-agreement">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="message-spammer-tos-agreement" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="/tos" target="_blank">Terms of Service</a> and <a href="/refund-policy" target="_blank">Refund Policy</a>
+                        </label>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <h4>Payment Method</h4>
+                        <div class="method-options">
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fab fa-cc-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-bitcoin"></i>
+                                <span>Crypto</span>
+                            </div>
+                            <div class="method-option" data-method="card">
+                                <i class="far fa-credit-card"></i>
+                                <span>Credit Card</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card-footer">
+                        <a href="#" class="btn btn-primary message-spammer-purchase-btn">
+                            <i class="fas fa-lock"></i>
+                            Complete purchase
+                        </a>
+                    </div>
+                    
+                    <div class="security-notice">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Your credentials are encrypted and never stored</span>
+                    </div>
+                    
+                    <div class="completion-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Service starts: <strong>Immediately</strong> after payment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="profilePictureModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Xbox 360 Profile Picture Package</h3>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="package-options">
+                    <div class="package-option active" data-amount="custom" data-price="4.99">
+                        <div class="option-header">
+                            <h4>Custom Picture</h4>
+                            <div class="option-price">$4.99</div>
+                        </div>
+                        <div class="option-features">
+                            <p>Authentic Xbox 360 square format</p>
+                            <p>Choose from 32,000+ OG pictures</p>
+                            <p>Immediate delivery</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Package:</span>
+                            <span class="selected-package">Custom Picture</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Price:</span>
+                            <span class="selected-price">$4.99</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span class="total-price">$4.99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-details">
+                        <h4>Account Information</h4>
+                        <div class="form-group">
+                            <label for="profile-picture-gamertag">Gamertag:</label>
+                            <input type="text" id="profile-picture-gamertag" placeholder="Your Xbox gamertag" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-picture-email">Account Email:</label>
+                            <input type="email" id="profile-picture-email" placeholder="Email linked to Xbox account" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-picture-password">Account Password:</label>
+                            <input type="password" id="profile-picture-password" placeholder="Xbox account password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-picture-selection">Select Picture:</label>
+                            <select id="profile-picture-selection" required>
+                                <option value="">Choose an OG picture</option>
+                                <option value="classic1">Classic Avatar 1</option>
+                                <option value="classic2">Classic Avatar 2</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+                        
+                        <div class="security-notice warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <strong>Important:</strong> You must disable all security measures before purchase:
+                                <ul>
+                                    <li>Disable Two-Factor Authentication (2FA)</li>
+                                    <li>Remove Authenticator apps</li>
+                                    <li>Disable login approvals</li>
+                                </ul>
+                                We cannot apply the picture if these are active.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tos-agreement">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="profile-picture-tos-agreement" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="/tos" target="_blank">Terms of Service</a> and <a href="/refund-policy" target="_blank">Refund Policy</a>
+                        </label>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <h4>Payment Method</h4>
+                        <div class="method-options">
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fab fa-cc-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-bitcoin"></i>
+                                <span>Crypto</span>
+                            </div>
+                            <div class="method-option" data-method="card">
+                                <i class="far fa-credit-card"></i>
+                                <span>Credit Card</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card-footer">
+                        <a href="#" class="btn btn-primary profile-picture-purchase-btn">
+                            <i class="fas fa-lock"></i>
+                            Complete purchase
+                        </a>
+                    </div>
+                    
+                    <div class="security-notice">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Your credentials are encrypted and never stored</span>
+                    </div>
+                    
+                    <div class="completion-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Delivery: <strong>Immediate</strong> after payment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div class="modal-overlay" id="profilePictureCheckoutModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Xbox 360 Profile Picture Checkout</h3>
+            <button class="modal-close">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="package-options">
+                <div class="package-option active" data-amount="custom" data-price="4.99">
+                    <div class="option-header">
+                        <h4>OG Profile Picture</h4>
+                        <div class="option-price">$4.99</div>
+                    </div>
+                    <div class="option-features">
+                        <p>Authentic Xbox 360 square format</p>
+                        <p>Choose from 32,000+ OG pictures</p>
+                        <p>Immediate delivery to your profile</p>
+                    </div>
+                </div>
+            </div>
             
-            // Payment method selection for both modals
-            document.querySelectorAll('.method-option').forEach(option => {
-                option.addEventListener('click', function() {
-                    const modal = this.closest('.modal-overlay');
-                    // Remove active class from all options in this modal
-                    modal.querySelectorAll('.method-option').forEach(opt => opt.classList.remove('active'));
-                    // Add active class to clicked option
-                    this.classList.add('active');
-                });
-            });
-            
-            // Followers checkout button
-            document.querySelector('.followers-checkout-btn').addEventListener('click', function() {
-                const gamertag = document.getElementById('followers-gamertag').value;
-                const selectedPackage = followersModal.querySelector('.package-option.active');
-                const paymentMethod = followersModal.querySelector('.method-option.active').dataset.method;
+            <div class="order-summary">
+                <h4>Order Summary</h4>
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Package:</span>
+                        <span class="selected-package">OG Profile Picture</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Price:</span>
+                        <span class="selected-price">$4.99</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span class="total-price">$4.99</span>
+                    </div>
+                </div>
                 
-                if (!gamertag) {
-                    alert('Please enter your gamertag');
-                    return;
-                }
+                <div class="account-details">
+                    <h4>Account Information</h4>
+                    <div class="form-group">
+                        <label for="profile-picture-checkout-gamertag">Gamertag:</label>
+                        <input type="text" id="profile-picture-checkout-gamertag" placeholder="Your Xbox gamertag" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-picture-checkout-email">Account Email:</label>
+                        <input type="email" id="profile-picture-checkout-email" placeholder="Email linked to Xbox account" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-picture-checkout-password">Account Password:</label>
+                        <input type="password" id="profile-picture-checkout-password" placeholder="Xbox account password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-picture-checkout-link">Picture Link:</label>
+                        <input type="url" id="profile-picture-checkout-link" placeholder="Paste the picture link here" required>
+                        <div class="picture-note">
+                            <i class="fas fa-info-circle"></i>
+                            <span>
+                                Visit <a href="https://xboxgamer.pics/" target="_blank" style="color: yellow;">https://xboxgamer.pics/</a>, hold on any picture you want, copy its link, and paste it here.
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="security-notice warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <strong>Important:</strong> You must disable all security measures before purchase:
+                            <ul>
+                                <li>Disable Two-Factor Authentication (2FA)</li>
+                                <li>Remove Authenticator apps</li>
+                                <li>Disable login approvals</li>
+                            </ul>
+                            We cannot apply the picture if these are active.
+                        </div>
+                    </div>
+                </div>
                 
-                const amount = selectedPackage.dataset.amount;
-                const price = selectedPackage.dataset.price;
+                <div class="tos-agreement">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="profile-picture-checkout-tos-agreement" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="/tos" target="_blank">Terms of Service</a> and <a href="/refund-policy" target="_blank">Refund Policy</a>
+                    </label>
+                </div>
                 
-                // Here you would normally process the payment
-                alert(`Processing order for ${amount} followers to ${gamertag} for $${price} via ${paymentMethod}`);
+                <div class="payment-methods">
+                    <h4>Payment Method</h4>
+                    <div class="method-options">
+                        <div class="method-option active" data-method="paypal">
+                            <i class="fab fa-cc-paypal"></i>
+                            <span>PayPal</span>
+                        </div>
+                        <div class="method-option" data-method="crypto">
+                            <i class="fab fa-bitcoin"></i>
+                            <span>Crypto</span>
+                        </div>
+                        <div class="method-option" data-method="card">
+                            <i class="far fa-credit-card"></i>
+                            <span>Credit Card</span>
+                        </div>
+                    </div>
+                </div>
                 
-                // Close modal after "processing"
-                followersModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-            
-            // Gamerscore checkout button
-            document.querySelector('.gamerscore-checkout-btn').addEventListener('click', function() {
-                const gamertag = document.getElementById('gamerscore-gamertag').value;
-                const email = document.getElementById('gamerscore-email').value;
-                const password = document.getElementById('gamerscore-password').value;
-                const selectedPackage = gamerscoreModal.querySelector('.package-option.active');
-                const paymentMethod = gamerscoreModal.querySelector('.method-option.active').dataset.method;
+                <div class="service-card-footer">
+                    <a href="#" class="btn btn-primary profile-picture-checkout-btn">
+                        <i class="fas fa-lock"></i>
+                        Complete purchase
+                    </a>
+                </div>
                 
-                if (!gamertag || !email || !password) {
-                    alert('Please fill in all account details');
-                    return;
-                }
+                <div class="security-notice">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Your credentials are encrypted and never stored</span>
+                </div>
                 
-                const amount = selectedPackage.dataset.amount;
-                const price = selectedPackage.dataset.price;
+                <div class="completion-time">
+                    <i class="fas fa-clock"></i>
+                    <span>Delivery: <strong>Immediate</strong> after payment</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-overlay" id="contactUsModal">
+    <div class="modal-content contact-us-modal">
+        <div class="modal-header">
+            <h3>Contact x3aa Services</h3>
+            <button class="modal-close">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="contact-us-content">
+                <h4>Reach Out for Custom Packages</h4>
+                <p>Connect with us to discuss tailored Xbox enhancement solutions or any other inquiries. We're available 24/7 to assist you!</p>
                 
-                // Here you would normally process the payment
-                alert(`Processing ${amount} GS boost for ${gamertag} (${email}) for $${price} via ${paymentMethod}\n\nNote: This will be completed within 24 hours`);
+                <div class="social-links-container">
+                    <div class="social-link">
+                        <a href="https://discord.gg/x3aa" target="_blank">
+                            <i class="fab fa-discord"></i>
+                            <span>Join our Discord</span>
+                        </a>
+                        <p>Fastest response time - chat with our team directly!</p>
+                    </div>
+                    <div class="social-link">
+                        <a href="https://twitter.com/x3aaservices" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                            <span>Follow us on Twitter</span>
+                        </a>
+                        <p>DM us for quick inquiries or updates.</p>
+                    </div>
+                    <div class="social-link">
+                        <a href="https://instagram.com/x3aaservices" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                            <span>Check us on Instagram</span>
+                        </a>
+                        <p>Message us for custom package details.</p>
+                    </div>
+                    <div class="social-link">
+                        <a href="mailto:support@x3aa.com">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email Support</span>
+                        </a>
+                        <p>Reach us at support@x3aa.com for detailed inquiries.</p>
+                    </div>
+                </div>
                 
-                // Close modal after "processing"
-                gamerscoreModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-        });
-    </script>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
