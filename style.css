@@ -989,11 +989,16 @@ input.shake {
         
         /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem 5%;
-            }
+    .navbar {
+        display: none !important; /* !important ile önceliği artır */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 2rem; /* Üst padding'i küçült */
+    }
+}
             
             .nav-links {
                 gap: 1rem;
@@ -1475,8 +1480,23 @@ body {
     color: #fff;
     line-height: 1.6;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
-
+@media (max-width: 768px) {
+    body {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+}
+@media (max-width: 768px) {
+    .hero {
+        margin-top: 0 !important;
+        padding-top: 1rem !important;
+        position: relative;
+        top: 0;
+    }
+}
 /* Navbar */
 .navbar {
     position: fixed;
@@ -1922,3 +1942,4 @@ footer {
 .checkbox-container {
     transition: border 0.3s;
 }
+
