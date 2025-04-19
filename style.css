@@ -1941,3 +1941,7 @@ footer {
     transition: border 0.3s;
 }
 
+.social-links a {
+    text-decoration: none;
+    border-bottom: none;
+}
