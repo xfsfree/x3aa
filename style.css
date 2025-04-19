@@ -412,12 +412,7 @@ input.shake {
             color: white;
             box-shadow: 0 5px 15px rgba(91, 201, 91, 0.3);
         }
-        
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
+
         
         .service-card {
             background-color: var(--gray);
@@ -1017,6 +1012,9 @@ input.shake {
             
             .service-grid {
                 grid-template-columns: 1fr;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                gap: 2rem;
             }
             
             .steps-container {
@@ -1390,7 +1388,7 @@ input.shake {
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 769px) {
             .modal-body {
                 grid-template-columns: 1fr;
             }
@@ -1400,7 +1398,7 @@ input.shake {
             }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 769px) {
             .package-options {
                 grid-template-columns: 1fr;
             }
