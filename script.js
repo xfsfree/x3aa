@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const accordionHeaders = document.querySelectorAll('.accordion-header');
-
     accordionHeaders.forEach(header => {
         header.addEventListener('click', function() {
             this.classList.toggle('active');
@@ -30,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const tabButtons = document.querySelectorAll('.tab-button');
-
     tabButtons.forEach(button => {
         button.addEventListener('click', function() {
             tabButtons.forEach(btn => btn.classList.remove('active'));
@@ -40,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const particlesContainer = document.getElementById('particles');
     const particleCount = 50;
-
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
@@ -74,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Modal Handling
     const modals = {
         followers: document.getElementById('followersModal'),
         gamerscore: document.getElementById('gamerscoreModal'),
@@ -108,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else if (key === 'profilePictureCheckout') {
                     modals.profilePictureCheckout.style.display = 'flex';
                 } else if (key === 'profilePicture') {
-                    modals.profilePictureCheckout.style.display = 'flex'; // Redirect to checkout modal
+                    modals.profilePictureCheckout.style.display = 'flex';
                 } else {
                     modals[key].style.display = 'flex';
                 }
@@ -154,7 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Purchase Logic
     const purchaseHandlers = {
         followers: {
             selector: '#followersModal .followers-purchase-btn',
@@ -257,7 +252,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedPackage = modals[key].querySelector('.package-option.active');
             let hasError = false;
 
-            // Check inputs first
             inputs.forEach(input => {
                 if (!input.value) {
                     input.classList.remove('shake');
@@ -273,7 +267,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (hasError) return;
 
-            // Check ToS checkbox only if all inputs are filled
             if (!tosCheckbox.checked) {
                 tosCheckbox.classList.remove('shake');
                 void tosCheckbox.offsetWidth;
@@ -297,5 +290,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
 });
