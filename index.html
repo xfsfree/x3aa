@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -380,7 +381,7 @@
                     <div class="accordion-header">Is this service safe for my account?</div>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            <p>We employ advanced techniques designed to emulate organic growth and activity patterns, significantly reducing the likelihood of detection by Microsoft's systems. Over our 2+ years of operation, we have achieved a high success rate with minimal issues when services are used as directed. However, as with any third-party service interacting with Xbox systems, there is an inherent risk of account restrictions or bans. We take every precaution to minimize this risk, but we cannot guarantee complete immunity from Xbox's enforcement actions.</p>
+                            <p>We employ advanced techniques designed to emulate organic growth and activity patterns, significantly reducing the likelihood of detection by Microsoft's systems. Over our 2+ years of operation, we have achieved a high success rate with minimal issues when services are used as directed. However, as with any third-party service interacting with Xbox systems, there is an inherent risk of account restrictions or bans. We take every precaution to minimize this risk, but we cannot guarantee complete immunity from Xbox'sempt enforcement actions.</p>
                         </div>
                     </div>
                 </div>
@@ -404,7 +405,7 @@
                     <div class="accordion-header">What payment methods do you accept?</div>
                     <div class="accordion-content">
                         <div class="accordion-content-inner">
-                            <p>We accept all major credit cards, PayPal, Google Pay, cryptocurrencies (Bitcoin, Ethereum, Litecoin). Crypto payments receive a 10% discount. All payments are processed securely through encrypted channels.</p>
+                            <p>We accept all major credit cards, PayPal, Google Pay, cryptocurrencies (Bitcoin, Ethereum, Litecoin). Google Pay payments receive a 10% discount. All payments are processed securely through encrypted channels.</p>
                         </div>
                     </div>
                 </div>
@@ -567,17 +568,21 @@
                     <div class="payment-methods">
                         <h4>Payment Method</h4>
                         <div class="method-options">
-                            <div class="method-option active" data-method="paypal">
-                                <i class="fab fa-cc-paypal"></i>
-                                <span>PayPal</span>
-                            </div>
-                            <div class="method-option" data-method="crypto">
-                                <i class="fab fa-bitcoin"></i>
-                                <span>Crypto</span>
-                            </div>
                             <div class="method-option" data-method="card">
                                 <i class="far fa-credit-card"></i>
                                 <span>Credit Card</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-google"></i>
+                                <span>Google Pay</span>
+                            </div>
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fas fa-university"></i>
+                                <span>Bank</span>
+                            </div>
+                            <div class="method-option" data-method="amazon">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span>Other</span>
                             </div>
                         </div>
                     </div>
@@ -697,17 +702,21 @@
                     <div class="payment-methods">
                         <h4>Payment Method</h4>
                         <div class="method-options">
-                            <div class="method-option active" data-method="paypal">
-                                <i class="fab fa-cc-paypal"></i>
-                                <span>PayPal</span>
-                            </div>
-                            <div class="method-option" data-method="crypto">
-                                <i class="fab fa-bitcoin"></i>
-                                <span>Crypto</span>
-                            </div>
                             <div class="method-option" data-method="card">
                                 <i class="far fa-credit-card"></i>
                                 <span>Credit Card</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-google"></i>
+                                <span>Google Pay</span>
+                            </div>
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fas fa-university"></i>
+                                <span>Bank</span>
+                            </div>
+                            <div class="method-option" data-method="amazon">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span>Other</span>
                             </div>
                         </div>
                     </div>
@@ -819,17 +828,21 @@
                     <div class="payment-methods">
                         <h4>Payment Method</h4>
                         <div class="method-options">
-                            <div class="method-option active" data-method="paypal">
-                                <i class="fab fa-cc-paypal"></i>
-                                <span>PayPal</span>
-                            </div>
-                            <div class="method-option" data-method="crypto">
-                                <i class="fab fa-bitcoin"></i>
-                                <span>Crypto</span>
-                            </div>
                             <div class="method-option" data-method="card">
                                 <i class="far fa-credit-card"></i>
                                 <span>Credit Card</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-google"></i>
+                                <span>Google Pay</span>
+                            </div>
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fas fa-university"></i>
+                                <span>Bank</span>
+                            </div>
+                            <div class="method-option" data-method="amazon">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span>Other</span>
                             </div>
                         </div>
                     </div>
@@ -844,7 +857,7 @@
                     </div>
                     <div class="completion-time">
                         <i class="fas fa-clock"></i>
-                        <span>Service starts: <strong>Immediately</powerful> after payment</span>
+                        <span>Service starts: <strong>Immediately</strong> after payment</span>
                     </div>
                 </div>
             </div>
@@ -941,17 +954,21 @@
                     <div class="payment-methods">
                         <h4>Payment Method</h4>
                         <div class="method-options">
-                            <div class="method-option active" data-method="paypal">
-                                <i class="fab fa-cc-paypal"></i>
-                                <span>PayPal</span>
-                            </div>
-                            <div class="method-option" data-method="crypto">
-                                <i class="fab fa-bitcoin"></i>
-                                <span>Crypto</span>
-                            </div>
                             <div class="method-option" data-method="card">
                                 <i class="far fa-credit-card"></i>
                                 <span>Credit Card</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-google"></i>
+                                <span>Google Pay</span>
+                            </div>
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fas fa-university"></i>
+                                <span>Bank</span>
+                            </div>
+                            <div class="method-option" data-method="amazon">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span>Other</span>
                             </div>
                         </div>
                     </div>
@@ -1063,17 +1080,21 @@
                     <div class="payment-methods">
                         <h4>Payment Method</h4>
                         <div class="method-options">
-                            <div class="method-option active" data-method="paypal">
-                                <i class="fab fa-cc-paypal"></i>
-                                <span>PayPal</span>
-                            </div>
-                            <div class="method-option" data-method="crypto">
-                                <i class="fab fa-bitcoin"></i>
-                                <span>Crypto</span>
-                            </div>
                             <div class="method-option" data-method="card">
                                 <i class="far fa-credit-card"></i>
                                 <span>Credit Card</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-google"></i>
+                                <span>Google Pay</span>
+                            </div>
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fas fa-university"></i>
+                                <span>Bank</span>
+                            </div>
+                            <div class="method-option" data-method="amazon">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span>Other</span>
                             </div>
                         </div>
                     </div>
@@ -1185,17 +1206,21 @@
                     <div class="payment-methods">
                         <h4>Payment Method</h4>
                         <div class="method-options">
-                            <div class="method-option active" data-method="paypal">
-                                <i class="fab fa-cc-paypal"></i>
-                                <span>PayPal</span>
-                            </div>
-                            <div class="method-option" data-method="crypto">
-                                <i class="fab fa-bitcoin"></i>
-                                <span>Crypto</span>
-                            </div>
                             <div class="method-option" data-method="card">
                                 <i class="far fa-credit-card"></i>
                                 <span>Credit Card</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-google"></i>
+                                <span>Google Pay</span>
+                            </div>
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fas fa-university"></i>
+                                <span>Bank</span>
+                            </div>
+                            <div class="method-option" data-method="amazon">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span>Other</span>
                             </div>
                         </div>
                     </div>
@@ -1298,17 +1323,21 @@
                     <div class="payment-methods">
                         <h4>Payment Method</h4>
                         <div class="method-options">
-                            <div class="method-option active" data-method="paypal">
-                                <i class="fab fa-cc-paypal"></i>
-                                <span>PayPal</span>
-                            </div>
-                            <div class="method-option" data-method="crypto">
-                                <i class="fab fa-bitcoin"></i>
-                                <span>Crypto</span>
-                            </div>
                             <div class="method-option" data-method="card">
                                 <i class="far fa-credit-card"></i>
                                 <span>Credit Card</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-google"></i>
+                                <span>Google Pay</span>
+                            </div>
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fas fa-university"></i>
+                                <span>Bank</span>
+                            </div>
+                            <div class="method-option" data-method="amazon">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span>Other</span>
                             </div>
                         </div>
                     </div>
@@ -1411,17 +1440,21 @@
                     <div class="payment-methods">
                         <h4>Payment Method</h4>
                         <div class="method-options">
-                            <div class="method-option active" data-method="paypal">
-                                <i class="fab fa-cc-paypal"></i>
-                                <span>PayPal</span>
-                            </div>
-                            <div class="method-option" data-method="crypto">
-                                <i class="fab fa-bitcoin"></i>
-                                <span>Crypto</span>
-                            </div>
                             <div class="method-option" data-method="card">
                                 <i class="far fa-credit-card"></i>
                                 <span>Credit Card</span>
+                            </div>
+                            <div class="method-option" data-method="crypto">
+                                <i class="fab fa-google"></i>
+                                <span>Google Pay</span>
+                            </div>
+                            <div class="method-option active" data-method="paypal">
+                                <i class="fas fa-university"></i>
+                                <span>Bank</span>
+                            </div>
+                            <div class="method-option" data-method="amazon">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <span>Other</span>
                             </div>
                         </div>
                     </div>
