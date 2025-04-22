@@ -166,7 +166,7 @@ const purchaseHandlers = {
     },
     gamerscore: {
         selector: '#gamerscoreModal .gamerscore-purchase-btn',
-        inputs: ['gamerscore-gamertag', 'gamerscore-email', 'gamerscore-password'],
+        inputs: ['gamerscore-gamertag'],
         tosCheckbox: 'gamerscore-tos-agreement',
         urls: {
             '50000': 'https://example.com/checkout/50k-gamerscore',
@@ -226,7 +226,7 @@ const purchaseHandlers = {
     },
     profilePicture: {
         selector: '#profilePictureModal .profile-picture-purchase-btn',
-        inputs: ['profile-picture-gamertag', 'profile-picture-email', 'profile-picture-password', 'profile-picture-selection'],
+        inputs: ['profile-picture-gamertag', 'profile-picture-selection'],
         tosCheckbox: 'profile-picture-tos-agreement',
         urls: {
             'custom': 'https://example.com/checkout/profile-picture',
@@ -235,7 +235,7 @@ const purchaseHandlers = {
     },
     profilePictureCheckout: {
         selector: '#profilePictureCheckoutModal .profile-picture-checkout-btn',
-        inputs: ['profile-picture-checkout-gamertag', 'profile-picture-checkout-email', 'profile-picture-checkout-password', 'profile-picture-checkout-link'],
+        inputs: ['profile-picture-checkout-gamertag', 'profile-picture-checkout-link'],
         tosCheckbox: 'profile-picture-checkout-tos-agreement',
         urls: {
             'custom': 'https://example.com/checkout/profile-picture-checkout',
