@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanks for Your Purchase | x3aa Services</title>
+    <meta name="description" content="Thank you for purchasing from x3aa Services. Contact us or wait for our team to reach out.">
+    <meta name="keywords" content="xbox services, x3aa, purchase confirmation">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="thanks.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-gamepad"></i>
+            <span>x3aa</span>Services
+        </div>
+        <ul class="nav-links">
+            <li><a href="../">Services</a></li>
+            <li><a href="../">How It Works</a></li>
+            <li><a href="../">Testimonials</a></li>
+            <li><a href="../">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <section class="thank-you">
+        <div class="section-container">
+            <div class="thank-you-content fade-in">
+                <h1>Thanks for Your Purchase!</h1>
+                <p>You will receive your bot followers soon. It usually takes minutes but can take up to hours. Feel free to contact us if you have questions.</p>
+                <div class="social-links">
+                    <a href="../discord" target="_blank" class="social-icon">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="../whatsapp" target="_blank" class="social-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="../twitter" target="_blank" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="../youtube" target="_blank" class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <a href="../" class="btn btn-primary pulse">
+                    <i class="fas fa-arrow-left"></i>Back to Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>x3aa Services</h3>
+                <p>Premium Xbox enhancement solutions since 2023. Trusted by over 8,500 customers worldwide.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="../"><i class="fas fa-chevron-right"></i>Xbox Followers</a></li>
+                    <li><a href="../"><i class="fas fa-chevron-right"></i>Gamerscore Boost</a></li>
+                    <li><a href="../"><i class="fas fa-chevron-right"></i>Rare Gamertags</a></li>
+                    <li><a href="../"><i class="fas fa-chevron-right"></i>LFG Post Spammer</a></li>
+                    <li><a href="../"><i class="fas fa-chevron-right"></i>Follower Bot Panel</a></li>
+                    <li><a href="../"><i class="fas fa-chevron-right"></i>Message Spammer Panel</a></li>
+                    <li><a href="../"><i class="fas fa-chevron-right"></i>Xbox 360 Profile Picture</a></li>
+                    <li><a href="../"><i class="fas fa-chevron-right"></i>Custom Package</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="../tos"><i class="fas fa-chevron-right"></i>Terms of Service</a></li>
+                    <li><a href="../privacy-policy"><i class="fas fa-chevron-right"></i>Privacy Policy</a></li>
+                    <li><a href="../refund-policy"><i class="fas fa-chevron-right"></i>Refund Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe for exclusive deals and service updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email" class="newsletter-input" required>
+                    <button type="submit" class="btn btn-primary" style="width: 260px; height: 43px;">
+                        <i class="fas fa-paper-plane"></i>Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">© <span id="current-year">2025</span> x3aa Services. All rights reserved. Not affiliated with Microsoft or Xbox.</div>
+    </footer>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
