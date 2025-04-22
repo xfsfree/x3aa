@@ -1670,7 +1670,7 @@ body {
 .section-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
 .section-header {
@@ -1901,7 +1901,7 @@ footer {
     }
 
     .section-container {
-        padding: 0 1rem;
+        padding: 0 0rem;
     }
 }
 
