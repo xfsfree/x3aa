@@ -292,4 +292,3 @@ document.querySelectorAll('input[required], select[required]').forEach(input => 
 });
 
 });
-
