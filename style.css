@@ -142,7 +142,7 @@ body {
 
 .hero {
     padding: 12rem 5% 6rem;
-    background: linear-gradient(135deg, rgba(11,11,11,0.9) 0%, rgba(15,15,15,0.95) 100%), 
+    background: linear-gradient(135deg, rgba(11,11,11,0.9) 0%, rgba(15,15,15,0.75) 100%), 
                 url('https://images.unsplash.com/photo-1605899435973-ca2d1a8861cf?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
     text-align: center;
     position: relative;
