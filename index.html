@@ -3,20 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Full Page Image</title>
+  <title>Swipe Image Gallery</title>
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
       height: 100%;
       overflow: hidden;
     }
-    body {
-      background: url('20250529_210819.jpg') no-repeat center center fixed;
+    #gallery {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+    .slide {
+      min-width: 100%;
+      height: 100%;
       background-size: cover;
+      background-position: center;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
     }
   </style>
 </head>
 <body>
+  <div id="gallery">
+    <div class="slide" style="background-image: url('20250529_180946.jpg')"></div>
+    <div class="slide" style="background-image: url('20250529_180944.jpg')"></div>
+    <div class="slide" style="background-image: url('20250529_183657.jpg')"></div>
+    <div class="slide" style="background-image: url('20250529_183701.jpg')"></div>
+    <div class="slide" style="background-image: url('20250529_203353.jpg')"></div>
+    <div class="slide" style="background-image: url('20250529_205230.jpg')"></div>
+    <div class="slide" style="background-image: url('20250529_210819.jpg')"></div>
+    <div class="slide" style="background-image: url('20250529_210232.jpg')"></div>
+    <div class="slide" style="background-image: url('20250529_210917.jpg')"></div>
+  </div>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    let currentIndex = 0;
+    let startX = 0;
+
+    gallery.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    gallery.addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const diff = endX - startX;
+
+      if (diff > 50 && currentIndex > 0) {
+        currentIndex--;
+      } else if (diff < -50 && currentIndex < gallery.children.length - 1) {
+        currentIndex++;
+      }
+
+      updateGallery();
+    });
+
+    function updateGallery() {
+      gallery.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+  </script>
 </body>
 </html>
